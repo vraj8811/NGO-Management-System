@@ -1,0 +1,96 @@
+* {
+    align-items: center;
+
+}
+
+.registervol {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    overflow-y: scroll;
+
+}
+
+.regvolbox {
+
+    width: 70%;
+    background: #fff;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 0 10px 2px rgb(0, 211, 141);
+    border-radius: 8px;
+    padding: 1rem;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.registervol .fields>input {
+    /* border-radius: 8px; */
+    border: none;
+    border-bottom: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    /* width: 92%; */
+    font-size: 1rem;
+
+    /* margin-left: -90px; */
+}
+
+.registervol .fields>textarea {
+    /* border-radius: 8px; */
+    border: none;
+    border-bottom: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    /* width: 92%; */
+    font-size: 1rem;
+
+    /* margin-left: -90px; */
+}
+
+
+.registervol .gender1 .gender2 {
+    margin-left: -90px;
+}
+
+
+.registervol .button {
+
+    background: #1877f2;
+    width: 150px;
+    border: 1px solid #1877f2;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin-left: 100px;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+#loglinkvol {
+    color: #006eff;
+}
+
+.rightvolreg {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 50px;
+    /* border: 1px solid green; */
+    background-color: rgb(160, 255, 223);
+    box-shadow: 0 0 10px 2px rgb(0, 211, 141);
+    border-radius: 50px;
+}
+
+.leftvolreg {
+
+    text-transform: capitalize;
+    color: navy;
+    align-items: center;
+    justify-items: center;
+
+}

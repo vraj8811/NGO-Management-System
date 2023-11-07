@@ -1,0 +1,79 @@
+* {
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.loginvol {
+
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    text-justify: center;
+}
+
+.loginvol .fields>input {
+    border-radius: 8px;
+    border: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    /* width: 60%; */
+    font-size: 1rem;
+}
+
+.logbutton {
+    background: #1877f2;
+    width: 150px;
+    border: 1px solid #1877f2;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+
+#reglinkvol {
+    color: #006eff;
+    cursor: pointer;
+
+}
+
+.Formlogvol {
+    width: 100%;
+    display: flex;
+    /* border: 1px solid green; */
+    border-radius: 20px;
+    height: 550px;
+    width:70%;
+    text-align: center;
+    text-justify: center;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 2px rgb(0, 211, 141);
+
+}
+
+.rightvol {
+margin-left: 50px;
+margin-right: 50px;
+padding: 50px;
+/* border: 1px solid green; */
+background-color: rgb(160, 255, 223);
+box-shadow: 0 0 10px 2px rgb(0, 211, 141);
+border-radius: 50px;
+}
+
+.leftvol {
+ 
+    text-transform: capitalize;
+    color: navy;
+    align-items: center;
+    justify-items: center;
+
+}

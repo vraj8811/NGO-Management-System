@@ -1,0 +1,133 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+header{
+    width: 100%;
+    height: 100vh;
+    background-image: url('images/bg.jpg');
+    /* background-size: 100% 100%; */
+    background-repeat: no-repeat;
+}
+
+.mainheaderfg
+{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.mainheaderfg .logo img{
+width: 200px;
+height : 80px;
+}
+
+.mainheaderfg nav{
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mainheaderfg nav a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+header nav a:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    border-bottom: 2px solid #020049;
+    transition: all 0.4s linear;
+}
+
+header nav a:hover:before{
+    width: 100%; 
+ }
+
+main
+{
+    width: 100%;    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+ .right{
+    margin-top: 50px;
+    margin-right: 100px;
+}
+ .left{
+    margin-left: 100px;
+    text-align: left;
+    text-transform: capitalize;
+    color: navy;
+    margin-top: 50px;
+}
+
+.left H1{
+    font-size: 30px;
+    font-weight: 700;
+    margin: 20px 0px;
+}
+
+.left H2{
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+
+.left button{
+    background-image: linear-gradient(to right, #42cdff, #4262ff, #42cdff);
+    color: white;
+    margin-left: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+    border-radius: 10px;
+    border: 1px solid #4262ff ;
+    cursor: pointer;
+}
+
+footer .logo img{
+    height : 60px;
+    width: auto;
+    
+    }
+
+footer
+{
+    color: white ;
+    /* margin-top: 125px; */
+    background-color: #020049;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: flex-start;
+    /* align-self: center; */
+    margin-bottom: 0;
+    position: fixed;
+    bottom: 0px;
+}
+p{
+    flex-direction: initial;
+    margin-top: 20px;
+    /* margin-right: 1000px;  */
+    font-size: small;
+}

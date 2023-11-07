@@ -1,0 +1,45 @@
+.mainheaderVOL
+{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 10px 5px rgb(123, 255, 211);
+
+}
+
+.mainheaderVOL .logo img{
+width: auto;
+height : 50px;
+}
+
+.mainheaderVOL nav{
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mainheaderVOL nav a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+ nav a:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    border-bottom: 2px solid #020049;
+    transition: all 0.4s linear;
+}
+
+ nav a:hover:before{
+    width: 100%; 
+ }
