@@ -28,7 +28,8 @@ const Firstpage =() =>
                 <h1> A COMMON PLATFORM FOR ALL NGOs TO GET VOLUNTEERS. </h1>
                 <h2>HOW YOU WANT TO LOG IN ?</h2>
                 <button onClick={() => history.push("/loginngo")} style={{color:'#020049'}}> NGO</button>
-            <button onClick={() => history.push("/loginvol")} style={{color:'#020049'}}> Volunteer</button>
+                <button onClick={() => history.push("/loginvol")} style={{color:'#020049'}}> Volunteer</button>
+                <button onClick={() => history.push("/logindon")} style={{color:'#020049'}}> Donor</button>
             </section>
     
             <section class="right">

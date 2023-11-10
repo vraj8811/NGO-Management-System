@@ -1,7 +1,10 @@
 import './App.css';
 import Homepage from './componentsvol/homepage/homepage';
+import Homepagedonor from './componentsdonor/homepage/homepagedonor';
 import Loginvol from './componentsvol/loginvol/loginvol';
 import Registervol from './componentsvol/registervol/registervol';
+import Logindon from './componentsdonor/logindon/logindon';
+import Registerdon from './componentsdonor/registerdon/registerdon';
 import Registerngo from './componentsngo/registerngo/registerngo';
 import Loginngo from './componentsngo/loginngo/loginngo';
 import Homepagengo from './componentsngo/homepagengo/homepagengo';
@@ -28,6 +31,7 @@ import {
 function App() {
   const [user, setLoginVolunteer] = useState({})
   const [user1, setLoginNGO] = useState({})
+  const [user2, setLoginDonor] = useState({})
   return (
     <div className="App">
       <Router>
@@ -57,6 +61,25 @@ function App() {
 
             <Registervol />
           </Route>
+
+          <Route path="/logindon">
+            <Logindon setLoginVolunteer={setLoginDonor} />
+          </Route>
+          
+          <Route path="/registerdon">
+
+            <Registerdon />
+          </Route>
+
+          <Route path="/homepagedonor" >
+            <Homepagedonor />
+            {/* {
+        user1 && user1._id ?<Homepagengo setLoginNGO={setLoginNGO}/>
+        : <Loginngo setLoginNGO={setLoginNGO} />
+      }     */}
+
+          </Route>
+
           <Route path="/homepagengo" >
             <Homepagengo />
             {/* {

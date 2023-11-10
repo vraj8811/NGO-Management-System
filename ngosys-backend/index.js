@@ -2,10 +2,13 @@ import express, { Router } from "express"
 import cors from "cors"
 import mongoose from "mongoose"
 import "dotenv/config";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 import Volunteer from "./models/Volunteer.js";
 import NGO from "./models/NGO.js";
 import Events from "./models/Events.js";
+import Donor from "./models/Donor.js";
 
 const app = express()
 app.use(express.json({ limit: "50mb", extended: true }));
@@ -41,7 +44,30 @@ app.post("/loginvol", async (req, res) => {
         res.send({ message: "User not Registered. Please Register" })
     }
 
-})
+});
+
+app.post("/logindon", async (req, res) => {
+    console.log("logged in as a donor")
+    const { email, passwd } = req.body
+    const user = await Donor.findOne({ email: email })
+
+
+    if (user) {
+        const isMatch = await bcrypt.compare(passwd, user.passwd)
+        if (isMatch) {
+            const token = await user.generateAuthToken();
+            console.log(user.email)
+            const final = user._id
+            res.send({ message: "Login Successful", token, user })
+            //token,user
+        } else {
+            res.send({ message: "Password incorrect" })
+        }
+    } else {
+        res.send({ message: "User not Registered. Please Register" })
+    }
+
+});
 
 
 app.post("/loginngo", async (req, res) => {
@@ -97,7 +123,38 @@ app.post("/registervol", (req, res) => {
             })
         }
     })
-})
+});
+
+app.post("/registerdon", (req, res) => {
+
+    const { firstname, lastname, address, city, state, gender, pnumber, email, passwd } = req.body
+    Donor.findOne({ email: email }, (err, user) => {
+        if (user) {
+            res.send({ message: "User Already Registered. Please use another Email Id." })
+        } else {
+            const donor = new Donor({
+                firstname,
+                lastname,
+                address,
+                city,
+                state,
+                gender,
+                pnumber,
+                email,
+                passwd
+            })
+
+            donor.save(err => {
+                if (err) {
+                    res.send(err)
+                } else {
+                    res.send({ message: "Successfully Registered. Please login now." })
+                }
+
+            })
+        }
+    })
+});
 
 app.post("/registerngo", (req, res) => {
 
