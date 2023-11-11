@@ -17,7 +17,10 @@ import { useState } from 'react';
 import Detaileventngo from './componentsngo/eventdetailsngo/eventdetailsngo';
 import Updatengo from './componentsngo/updatengo/updatengo';
 import Updatevol from './componentsvol/updatevol/updatevol';
+import Updatedon from './componentsdonor/updatedon/updatedon';
 import Updateevents from './componentsngo/updateevent/updateevent';
+import Donatemoney from './componentsdonor/donatemoney/donatemoney';
+import Donatethings from './componentsdonor/donatethings/donatethings';
 
 import {
   BrowserRouter as Router,
@@ -92,11 +95,19 @@ function App() {
           <Route path="/loginngo">
             <Loginngo setLoginNGO={setLoginNGO} />
           </Route>
+
           <Route path="/updatevol">
             {
               <Updatevol />
             }
           </Route>
+
+          <Route path="/updatedon">
+            {
+              <Updatedon />
+            }
+          </Route>
+
           <Route path="/updatengo">
             {
               <Updatengo />
@@ -107,6 +118,17 @@ function App() {
             <Registerngo />
 
           </Route>
+
+          <Route path="/donatemoney">
+            <Donatemoney />
+
+          </Route>
+
+          <Route path="/donatethings">
+            <Donatethings />
+
+          </Route>
+
           <Route path="/addevents">
             <Addevents />
 

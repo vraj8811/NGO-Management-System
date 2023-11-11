@@ -86,3 +86,16 @@ height : 50px;
     margin-right: calc(-.5 * var(--bs-gutter-x));
     margin-left: calc(-.5 * var(--bs-gutter-x));
 }
+
+.extrabutton button{
+    background-image: linear-gradient(to right, #42cdff, #4262ff, #42cdff);
+    color: white;
+    margin-left: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+    border-radius: 10px;
+    border: 1px solid #4262ff ;
+    cursor: pointer;
+}

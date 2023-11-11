@@ -239,6 +239,32 @@ app.post("/updatevol", (req, res) => {
 
 })
 
+app.post("/updatedon", (req, res) => {
+    console.log("visited")
+
+    var olddonstatus = Donor.findById(req.body.ID)
+    Donor.findOneAndUpdate({ _id: req.body.ID },
+        {
+            firstname: req.body.firstname || olddonstatus.firstname,
+            lastname: req.body.lastname || olddonstatus.lastname,
+            address: req.body.address || olddonstatus.address,
+            city: req.body.city || olddonstatus.city,
+            state: req.body.state || olddonstatus.state,
+            pnumber: req.body.pnumber || olddonstatus.pnumber,
+            email: req.body.email || oldvolstatus.email
+
+        },
+        { new: true },
+        (err, user) => {
+            // console.log(user)
+            if (req.body.email != null && req.body.email.length > 0 && req.body.email)
+                if (err) return res.json({ success: false, err });
+            res.status(200).json({ user, message: "Donor Details Updated Successfully. " })
+        }
+    )
+
+})
+
 app.post("/addevents", (req, res) => {
 
     // console.log(req.body.D)

@@ -35,10 +35,10 @@ const Homepagedonor = () => {
                 </div>
 
                 <nav>
-                    <a href="/homepage">Home</a>
+                    <a href="/homepagedonor">Home</a>
                     <a href="/contactus">Contact</a>
-                    {/* <a onClick={() => history.push("/updatedon")} style={{ cursor: "pointer" }}>Update Profile </a>
-                    <a style={{ cursor: 'pointer' }} onClick={() => history.push("/registeredevents")} >Registered Events</a> */}
+                    <a onClick={() => history.push("/updatedon")} style={{ cursor: "pointer" }}>Update Profile </a>
+                    {/* <a style={{ cursor: 'pointer' }} onClick={() => history.push("/registeredevents")} >Registered Events</a> */}
                     <button className="btn btn-outline-danger " onClick={logout}>Logout</button>
 
                 </nav>
@@ -48,7 +48,13 @@ const Homepagedonor = () => {
             <h1 style={{ display: 'flex', justifyContent: 'center' }}>Hello {user.user.firstname} {user.user.lastname} !!!</h1>
             <br></br><br></br>
 
-<Footer/>
+            <div className="extrabutton">
+                <button onClick={() => history.push("/donatemoney")} style={{color:'#020049'}}> Donate Money</button>
+                <button onClick={() => history.push("/donatethings")} style={{color:'#020049'}}> Donate Things</button>
+            </div>
+
+        <Footer/>
+        
         </div>
 
     )
