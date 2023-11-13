@@ -48,11 +48,25 @@ const Homepagedonor = () => {
             <h1 style={{ display: 'flex', justifyContent: 'center' }}>Hello {user.user.firstname} {user.user.lastname} !!!</h1>
             <br></br><br></br>
 
-            <div className="extrabutton">
+            <div className="extrabutton" align="center">
                 <button onClick={() => history.push("/donatemoney")} style={{color:'#020049'}}> Donate Money</button>
                 <button onClick={() => history.push("/donatethings")} style={{color:'#020049'}}> Donate Things</button>
             </div>
-
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         <Footer/>
         
         </div>

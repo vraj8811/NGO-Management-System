@@ -110,7 +110,7 @@ const Registerngo = () => {
                               </div>
 
                               <div className="fields">
-                                   <label> NGO ID: </label>
+                                   <label> UPI ID: </label>
                                    <input type="text" name="NGOID" value={user.NGOID} placeholder="Enter your NGO ID" onChange={handleChange} ></input>
                               </div>
                               <div className="fields">

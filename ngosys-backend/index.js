@@ -665,6 +665,19 @@ app.post("/addToSuggestion/:eventid/:userid", (req, res) => {
 
 })
 
+//to display list of ngo for the donor
+app.get('/getallngo',async (req, res) => {
+    try {
+      const ngo = await NGO.find();
+      res.json(ngo);
+      //res.json(req.user);
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Internal Server Error");
+    }
+  
+  });
+
 app.listen(9002, () => {
     console.log("Started at 9002 port")
 });
