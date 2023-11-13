@@ -25,6 +25,7 @@ const Navbar = () => {
             <nav>
                 <a onClick={() => history.push("/homepagengo")} style={{ cursor: 'pointer' }}>Home</a>
                 <a href="/contactus">Contact</a>
+                <a onClick={() => history.push("/transection")} style={{ cursor: "pointer" }}>Transection</a>
                 <a onClick={() => history.push("/updatengo")} style={{ cursor: "pointer" }}>Update Profile</a>
                 <a onClick={() => history.push("/addevents")} style={{ cursor: "pointer" }}>Add Event</a>
                 <button className="btn btn-outline-danger" onClick={logout}>Logout</button>

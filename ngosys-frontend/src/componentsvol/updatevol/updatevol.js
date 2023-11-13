@@ -26,7 +26,8 @@ const Updatevol = () => {
 
         if (emailErrorstatus === "false") {
             axios.post("http://localhost:9002/updatevol", variables)
-                .then(res => alert(res.data.message))
+                .then(res => alert(res.data.message));
+                history.push("/homepage");
         } else {
             alert("please re-enter your Email ID")
         }

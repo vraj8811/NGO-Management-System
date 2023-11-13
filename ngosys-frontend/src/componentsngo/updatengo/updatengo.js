@@ -17,7 +17,7 @@ const Updatengo = () => {
             address: address,
             city: city,
             state: state,
-            NGOID: user1.user.NGOID,
+            NGOID: NGOID,
             pnumber: pnumber,
             email: email,
 
@@ -25,7 +25,8 @@ const Updatengo = () => {
 
         if (emailErrorstatus === "false") {
             axios.post("http://localhost:9002/updatengo", variables)
-                .then(res => alert(res.data.message))
+                .then(res => alert(res.data.message));
+                history.push("/homepagengo");
         } else {
             alert("please re-enter your Email ID")
         }
@@ -37,6 +38,8 @@ const Updatengo = () => {
     const [state, setState] = useState("")
     const [pnumber, setPnumber] = useState("")
     const [email, setEmail] = useState("")
+    const [NGOID, setNGOID] = useState("")
+
 
     const onNameChange = (event) => {
         setName(event.currentTarget.value)
@@ -57,6 +60,9 @@ const Updatengo = () => {
     }
     const onEmailChange = (event) => {
         setEmail(event.currentTarget.value)
+    }
+    const onNGOIDChange = (event) => {
+        setNGOID(event.currentTarget.value)
     }
 
 
@@ -116,6 +122,13 @@ const Updatengo = () => {
                             <label> Number: </label>
                             <input type="text" name="contact" value={pnumber} placeholder={user1.user.pnumber} onChange={onPnumberChange}></input>
                         </div>
+
+                        <div className="fields">
+                            <label> NGOID: </label>
+                            <input type="text" name="state" value={NGOID} placeholder={user1.user.NGOID} onChange={onNGOIDChange} ></input>
+                        </div>
+
+
                         <div className="fields">
                             <label> E-mail: </label>
                             <input type="text" name="email" value={email} placeholder={user1.user.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)} ></input>
