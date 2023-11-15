@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import "./loginngo.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom";
-import Navbar from "../../commoncomponent/navbar";
-import img1 from "../../firstpage/images/ngolog.png"
-import Footer from "../../commoncomponent/footer/footer2/footer2";
-
 // {setLoginNGO}
 const Loginngo = () => {
     const history = useHistory();
@@ -68,23 +64,15 @@ const Loginngo = () => {
 
     return (
         <>
-
-            <Navbar />
             <logpage className="loginngo">
                 <br></br>
                 <br></br>
                 <logngo style={{ display: 'flex', justifyContent: 'center' }}>
-
-                    <section className="Formlogngo" >
-                        <section className="leftvol">
-                            <img src={img1} alt="login picture" width="500px" />
-                        </section>
-
                         <section className="rightngo">
-                            <mainngo  >
-                                <h1>Login as an NGO</h1><br />
+                            <mainngo>
+                                <h1>Login As NGO</h1><br />
                                 <field className="fields">
-                                    <label style={{ paddingRight: '10px' }}> Email id: </label>
+                                    <label style={{ paddingRight: '10px' }}> Email:</label>
                                     {/* <input type="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter email address"></input> */}
                                     <input type="text" name="email" value={user.email} onChange={handleChange} onInput={(e) => validateEmail(e)} placeholder="Enter email address"></input>
                                     <span style={{
@@ -96,19 +84,16 @@ const Loginngo = () => {
                                     <label style={{ paddingRight: '10px' }}> Password: </label>
                                     <input type="password" name="passwd" value={user.passwd} onChange={handleChange} placeholder="Enter Your password"></input>
                                 </field><br />
-                                <button className="btn btn-outline-primary btn-lg" onClick={loginNgo}> Login </button><br />
+                                <button className="btn btn-outline-primary btn-lg" onClick={loginNgo} id="ngoL" style={{width: '100%'}}> Login </button><br />
                                 <h7>or</h7><br />
                                 <text>Don't have Account?</text>
                                 <a id="reglinkngo" onClick={() => history.push("/registerngo")} title="click here to Sign up"> Sign up here </a>
                             </mainngo>
                         </section>
-
-                    </section>
-
+                        
                 </logngo>
                 <br />
             </logpage>
-            <Footer />
         </>
 
     )
