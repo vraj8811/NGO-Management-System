@@ -1,12 +1,12 @@
-
-
 .loginngo {
-    
-    width: 100vw;
-    height: 100vh;
     align-items: center;
     text-align: center;
- 
+}
+
+.App
+{
+    background: none;
+    margin-top: 0;
 }
 
 .loginngo .fields > input {
@@ -21,21 +21,29 @@
 }
 
 .logngobut {
-    background: #1877f2;
-    width: 150px;
-    border: 1px solid #1877f2;
-    color: #fff;
-    font-size: 1.25rem;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
+    background-image: linear-gradient(to right,  #4262ff, #90d7f1);
+    color: white;
+    margin-left: 0.5%;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 0;
 }
 
+.logngobut:hover
+{
+    background-image: linear-gradient(to right,  #2e42a4, #90d7f1);
+}
+
+#ngpL
+{
+    margin-top: 5%;
+    margin-bottom: 2.5%;
+}
 
 #reglinkngo{
-    color: #006eff;
+    color: #4262ff;
     cursor: pointer;
     
 }
@@ -51,17 +59,17 @@
     text-justify: center;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 10px 2px rgb(0, 211, 141);
+    box-shadow: 0 0 10px 2px #4262ff;
 
 }
 
 .rightngo {
-margin-left: 50px;
-margin-right: 50px;
+margin-left: 28%;
+margin-top: 10%;
 padding: 50px;
 /* border: 1px solid green; */
-background-color: rgb(160, 255, 223);
-box-shadow: 0 0 10px 2px rgb(0, 211, 141);
+background-color: rgba(136, 130, 130, 0.8);
+box-shadow: 0 0 7px 2px #4262ff;
 border-radius: 50px;
 }
 
@@ -73,3 +81,8 @@ border-radius: 50px;
     justify-items: center;
 
 }
+label {
+        width: 30%;
+        text-align: right;
+  }
+  

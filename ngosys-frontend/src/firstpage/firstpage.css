@@ -2,132 +2,66 @@
 {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-
 }
 
-header{
-    width: 100%;
-    height: 100vh;
-    background-image: url('images/bg.jpg');
+body{
+    background-image: linear-gradient(to bottom right, rgba(110, 106, 106, 0.7), rgba(6, 7, 7, 0.9)), url('images/bg8.jpg');
     /* background-size: 100% 100%; */
     background-repeat: no-repeat;
+    background-size: cover;
+    width: 80%;
+    height: 800px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
 }
 
-.mainheaderfg
+.App
 {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+    border-radius: 2%;
 }
 
-.mainheaderfg .logo img{
-width: 200px;
-height : 80px;
-}
-
-.mainheaderfg nav{
-    width: 500px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.mainheaderfg nav a{
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    text-transform: uppercase;
-    position: relative;
-}
-
-header nav a:before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    border-bottom: 2px solid #020049;
-    transition: all 0.4s linear;
-}
-
-header nav a:hover:before{
-    width: 100%; 
- }
-
-main
+.card
 {
-    width: 100%;    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: rgba(136, 130, 130, 0.8);
+    border-radius: 2%;
+    margin-top: 18%;
+    margin-left: 27%;
+}
 
-}
- .right{
-    margin-top: 50px;
-    margin-right: 100px;
-}
  .left{
-    margin-left: 100px;
-    text-align: left;
+    margin: 3%;
+    text-align: center;
     text-transform: capitalize;
     color: navy;
-    margin-top: 50px;
 }
 
 .left H1{
     font-size: 30px;
     font-weight: 700;
-    margin: 20px 0px;
+    margin: 1% 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .left H2{
     font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 20px;
+    font-weight: bold;
+    margin: 2% 0;
 }
 
 
-.left button{
-    background-image: linear-gradient(to right, #42cdff, #4262ff, #42cdff);
+.btn{
+    background-image: linear-gradient(to right,  #4262ff, #90d7f1);
     color: white;
-    margin-left: 10px;
+    margin-left: 0.5%;
     padding: 10px 20px;
     text-align: center;
     font-size: 14px;
-    font-style: italic;
     border-radius: 10px;
-    border: 1px solid #4262ff ;
-    cursor: pointer;
+    border: 0;
 }
 
-footer .logo img{
-    height : 60px;
-    width: auto;
-    
-    }
-
-footer
+.btn:hover
 {
-    color: white ;
-    /* margin-top: 125px; */
-    background-color: #020049;
-    width: 100%;
-    height: 65px;
-    display: flex;
-    justify-content: flex-start;
-    /* align-self: center; */
-    margin-bottom: 0;
-    position: fixed;
-    bottom: 0px;
-}
-p{
-    flex-direction: initial;
-    margin-top: 20px;
-    /* margin-right: 1000px;  */
-    font-size: small;
+    background-image: linear-gradient(to right,  #2e42a4, #90d7f1);
 }
