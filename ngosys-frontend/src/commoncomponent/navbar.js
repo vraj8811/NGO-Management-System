@@ -19,7 +19,7 @@ const Navbar =() =>
         <nav>
             <a onClick={() => history.push("/")} style={{cursor:'pointer'}}>Home</a>
             <a href="/help">help</a>
-            <a href="/contactus">Contact</a>
+            {/* <a href="/contactus">Contact</a> */}
             
         </nav>
         </section>

@@ -23,7 +23,7 @@ const Homepagengo = () => {
     const logout = () => {
         localStorage.removeItem("currentUser");
         localStorage.removeItem("currentRegUser");
-        history.push("/loginngo")
+        history.push("/")
     }
 
 
@@ -73,9 +73,9 @@ const Homepagengo = () => {
 
                 <nav>
                     <a href="/homepagengo">Home</a>
-                    <a href="/contactus">Contact</a>
-                    <a onClick={() => history.push("/updatengo")} style={{ cursor: "pointer" }}>Update Profile</a>
+                    {/* <a href="/contactus">Contact</a> */}
                     <a onClick={() => history.push("/transection")} style={{ cursor: "pointer" }}>Transection</a>
+                    <a onClick={() => history.push("/updatengo")} style={{ cursor: "pointer" }}>Update Profile</a>
                     <a onClick={() => history.push("/addevents")} style={{ cursor: "pointer" }}>Add Event</a>
                     <button className="btn btn-outline-danger" onClick={logout}>Logout</button>
                 </nav>
@@ -195,7 +195,6 @@ const Homepagengo = () => {
                         )}
                 </div>
             </div>
-            <Footer/>
         </div>
     )
 }

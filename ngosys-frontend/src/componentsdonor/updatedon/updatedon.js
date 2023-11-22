@@ -147,7 +147,7 @@ const Updatedon = () => {
 
             </div>
 
-            <Footer />
+           
         </>
     )
 }

@@ -129,7 +129,7 @@ const Detaileventngo = () => {
                 <br></br>
 
 
-                <h3>Feedbacks:</h3>
+                {/* <h3>Feedbacks:</h3>
                 <table className="table ">
                     <tr className="tableheader">
                         <th scope="col">First Name</th>
@@ -151,7 +151,7 @@ const Detaileventngo = () => {
                                 </tr>
                             </tbody>
                         )}
-                </table>
+                </table> */}
                 <br></br>
 
                 <h3>List of Registered Participants:</h3>
@@ -180,7 +180,6 @@ const Detaileventngo = () => {
                 </table>
                 <br />
             </div>
-            <Footer />
         </>
     );
 };

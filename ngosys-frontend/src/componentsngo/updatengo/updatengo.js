@@ -150,7 +150,6 @@ const Updatengo = () => {
                 </div>
                 <br />
             </div>
-            <Footer />
         </>
     )
 }

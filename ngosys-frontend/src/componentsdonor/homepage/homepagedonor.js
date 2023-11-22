@@ -23,7 +23,7 @@ const Homepagedonor = () => {
     const logout = () => {
         localStorage.removeItem("currentUser");
         localStorage.removeItem("currentRegUser");
-        history.push("/logindon")
+        history.push("/")
     }
 
     return (
@@ -36,8 +36,9 @@ const Homepagedonor = () => {
 
                 <nav>
                     <a href="/homepagedonor">Home</a>
-                    <a href="/contactus">Contact</a>
+                    {/* <a href="/contactus">Contact</a> */}
                     <a onClick={() => history.push("/updatedon")} style={{ cursor: "pointer" }}>Update Profile </a>
+                    <a onClick={() => history.push("/viewtrans")} style={{ cursor: "pointer" }}>View Transections </a>
                     {/* <a style={{ cursor: 'pointer' }} onClick={() => history.push("/registeredevents")} >Registered Events</a> */}
                     <button className="btn btn-outline-danger " onClick={logout}>Logout</button>
 
@@ -67,7 +68,7 @@ const Homepagedonor = () => {
             <br></br>
             <br></br>
             <br></br>
-        <Footer/>
+        
         
         </div>
 

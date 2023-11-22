@@ -181,7 +181,6 @@ const Detailevent = () => {
             <br />
 
             <br />
-            <Footer />
 
         </>
     );

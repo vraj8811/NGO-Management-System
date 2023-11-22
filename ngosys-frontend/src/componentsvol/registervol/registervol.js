@@ -147,7 +147,6 @@ const Registervol = () => {
                     </div>
 
                </div>
-               <Footer />
           </>
      )
 }

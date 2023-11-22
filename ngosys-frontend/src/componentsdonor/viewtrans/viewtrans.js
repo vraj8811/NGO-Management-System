@@ -12,9 +12,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+const Viewtrans = () => {
 
-
-const Transection = () => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
     const history = useHistory();
     const [transList, setTransList] = useState([]);
@@ -26,22 +25,19 @@ const Transection = () => {
 
     useEffect(() => {
         fetchAllTrans(user.user._id);
-      }, []);
+    }, []);
 
-      const fetchAllTrans = async (transid) => {
+    const fetchAllTrans = async (transid) => {
         try {
-          const response = await fetch(`http://localhost:9002/transactions/${transid}`, {
-            method: 'GET'
-          });
-          const data = await response.json();
-          setTransList(data);
+            const response = await fetch(`http://localhost:9002/transactionsdon/${transid}`, {
+                method: 'GET'
+            });
+            const data = await response.json();
+            setTransList(data);
         } catch (error) {
-          console.error(error.message);
+            console.error(error.message);
         }
-      };
-
-
-
+    };
 
     return (
         <div>
@@ -53,15 +49,14 @@ const Transection = () => {
                 <nav>
                     <a href="/homepagengo">Home</a>
                     {/* <a href="/contactus">Contact</a> */}
-                    <a onClick={() => history.push("/transection")} style={{ cursor: "pointer" }}>Transection</a>
-                    <a onClick={() => history.push("/updatengo")} style={{ cursor: "pointer" }}>Update Profile</a>
-                    <a onClick={() => history.push("/addevents")} style={{ cursor: "pointer" }}>Add Event</a>
+                    <a onClick={() => history.push("/updatedon")} style={{ cursor: "pointer" }}>Update Profile </a>
+                    <a onClick={() => history.push("/viewtrans")} style={{ cursor: "pointer" }}>View Transections </a>
                     <button className="btn btn-outline-danger" onClick={logout}>Logout</button>
                 </nav>
             </div>
 
             <div className="container">
-              <br></br>
+                <br></br>
                 <h1 align="center">All Transections</h1>
                 {transList.length === 0 ? (
                     <p>No Transection History available</p>
@@ -70,21 +65,21 @@ const Transection = () => {
                         <thead>
                             <tr>
                                 <th>Index</th>
-                                <th>Donor Name</th>
-                                <th>Donor Email</th>
-                                <th>Donor Phone Number</th>
+                                <th>NGO Name</th>
+                                <th>NGO Email</th>
+                                <th>NGO Phone Number</th>
                                 <th>Date</th>
                                 <th>Amount</th>
                                 <th>Transection ID</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {transList.map((trans,index) => (
+                            {transList.map((trans, index) => (
                                 <tr key={trans._id}>
-                                    <td>{index+1}</td>
-                                    <td>{trans.donorid.firstname + ' ' + trans.donorid.lastname}</td>
-                                    <td>{trans.donorid.email}</td>
-                                    <td>{trans.donorid.pnumber}</td>
+                                    <td>{index + 1}</td>
+                                    <td>{trans.ngoid.name }</td>
+                                    <td>{trans.ngoid.email}</td>
+                                    <td>{trans.ngoid.pnumber}</td>
                                     <td>{moment(trans.date).format('LL')}</td>
                                     <td>{trans.amount}</td>
                                     <td>{trans.razorpayPaymentId}</td>
@@ -98,4 +93,4 @@ const Transection = () => {
     )
 }
 
-export default Transection
+export default Viewtrans

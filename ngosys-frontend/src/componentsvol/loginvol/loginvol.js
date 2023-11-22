@@ -114,7 +114,6 @@ const Loginvol = () => {
                 </logvol>
             </logpage>
             <br />
-            <Footer />
         </>
 
     )

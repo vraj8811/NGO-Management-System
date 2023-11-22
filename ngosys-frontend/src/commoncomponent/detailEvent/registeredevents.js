@@ -200,7 +200,7 @@ const Registeredevents = () => {
                         )}
                 </div>
             </div>
-            <Footer />
+            
         </div>
 
     )

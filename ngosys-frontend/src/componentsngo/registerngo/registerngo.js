@@ -143,7 +143,6 @@ const Registerngo = () => {
                     </div>
 
                </div>
-               <Footer />
           </>
      )
 }

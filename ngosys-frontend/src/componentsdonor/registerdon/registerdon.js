@@ -147,7 +147,6 @@ const Registerdon = () => {
                     </div>
 
                </div>
-               <Footer />
           </>
      )
 }

@@ -145,8 +145,6 @@ const Updatevol = () => {
                 </div>
 
             </div>
-
-            <Footer />
         </>
     )
 }

@@ -245,7 +245,6 @@ const Updateevents = () => {
                     </div>
                     <br />
                </div>
-               <Footer />
           </>
      )
 }

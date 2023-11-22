@@ -775,6 +775,24 @@ app.post('/transactions', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+  // Endpoint to retrieve all transactions for a specific NGO
+app.get('/transactionsdon/:donID', async (req, res) => {
+    const ID = req.params.donID;
+
+    try {
+        // Find all transactions for the specified NGO ID
+        const transactions = await Transection.find({ donorid: ID }).populate('donorid').populate('ngoid');
+        //console.log(transactions);
+
+        // Send the transactions as a response
+        res.json(transactions);
+    } catch (error) {
+        // Handle errors and send an error response
+        console.error('Error retrieving transactions:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
   
 
 app.listen(9002, () => {

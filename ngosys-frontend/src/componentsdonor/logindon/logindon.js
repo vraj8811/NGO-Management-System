@@ -114,7 +114,7 @@ const Logindon = () => {
                 </logdon>
             </logpage>
             <br />
-            <Footer />
+            
         </>
 
     )
