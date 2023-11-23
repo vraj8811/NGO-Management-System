@@ -73,44 +73,30 @@ const Registervol = () => {
 
      return (
           <>
-               <Navbar />
-
-               <div className="registervol" style={{ display: 'flex', justifyContent: 'center' }}>
-
-
-                    <div className="regvolbox" style={{ display: 'flex', justifyContent: 'center' }}>
-                         <section className="leftvolreg">
-                              <img src={img1} alt="login picture" width="400px" style={{ marginRight: "100px" }} />
-                         </section>
-                         {/* <div className="d-flex" style={{ height: '600px' }}>
-                        <div className="vr"></div>
-                    </div> */}
-                         <section className="">
+                    <div className="regvolbox">
+                         <div className="formB">
                               <h1>Register as a Volunteer</h1>
-                              <br></br>
                               <div className="fields">
-
                                    <label> First name: </label>
-                                   <input type="text" name="firstname" value={user.firstname} placeholder="Enter First name" onChange={handleChange}></input>
-
+                                   <input type="text" name="firstname" value={user.firstname} placeholder="Enter First Name" onChange={handleChange}></input>
                               </div>
                               <div className="fields">
                                    <label> Last name: </label>
-                                   <input type="text" name="lastname" value={user.lastname} placeholder="Enter Last name" onChange={handleChange}></input>
+                                   <input type="text" name="lastname" value={user.lastname} placeholder="Enter Last Name" onChange={handleChange}></input>
                               </div>
-                              <div className="fields" style={{ display: 'flex', justifyContent: 'center' }}>
+                              <div className="fields">
                                    <label> Address: </label>
-                                   <textarea name="address" value={user.address} placeholder="Enter your address" onChange={handleChange}></textarea>
+                                   <textarea name="address" value={user.address} placeholder="Enter Address" onChange={handleChange}></textarea>
                               </div>
                               <div className="fields">
                                    <label> City: </label>
-                                   <input type="text" name="city" value={user.city} placeholder="Enter your city" onChange={handleChange}></input>
+                                   <input type="text" name="city" value={user.city} placeholder="Enter City" onChange={handleChange}></input>
                               </div>
                               <div className="fields">
                                    <label> State: </label>
-                                   <input type="text" name="state" value={user.state} placeholder="Enter your state" onChange={handleChange} ></input>
+                                   <input type="text" name="state" value={user.state} placeholder="Enter State" onChange={handleChange} ></input>
                               </div>
-                              <div className="fields gender1" >
+                              <div className="fields" >
                                    <label className="gender2"> Gender : </label>
                                    <input type="radio" name="gender" value="male" style={{ paddingLeft: '20px' }} onChange={handleChange}></input>
                                    <label> Male </label>
@@ -119,11 +105,11 @@ const Registervol = () => {
                               </div>
                               <div className="fields">
                                    <label> Number: </label>
-                                   <input type="text" name="pnumber" value={user.pnumber} placeholder="Enter your phone number" onChange={handleChange}></input>
+                                   <input type="text" name="pnumber" value={user.pnumber} placeholder="Enter Phone Number" onChange={handleChange}></input>
                               </div>
                               <div className="fields">
                                    <label> E-mail: </label>
-                                   <input type='email' name="email" value={user.email} placeholder="Enter your E-mail" onChange={handleChange} onInput={(e) => validateEmail(e)} ></input>
+                                   <input type='email' name="email" value={user.email} placeholder="Enter E-mail" onChange={handleChange} onInput={(e) => validateEmail(e)} ></input>
                                    <span style={{
                                         fontWeight: 'bold',
                                         color: 'red',
@@ -131,23 +117,20 @@ const Registervol = () => {
                               </div>
                               <div className="fields">
                                    <label> Password: </label>
-                                   <input type="password" name="passwd" value={user.passwd} placeholder="Enter your password" onChange={handleChange} ></input>
+                                   <input type="password" name="passwd" value={user.passwd} placeholder="Enter Password" onChange={handleChange} ></input>
                               </div>
                               <div className="fields">
                                    <label> Confirm Password: </label>
-                                   <input type="password" name="reenterpassword" value={user.reenterpassword} placeholder="Re-Enter your password" onChange={handleChange} ></input>
+                                   <input type="password" name="reenterpassword" value={user.reenterpassword} placeholder="Re-Enter Password" onChange={handleChange} ></input>
                               </div>
-                              <div className="btn btn-outline-primary btn-lg" onClick={registerVol}> Register </div>
+                              <div className="btn" id="rVol" onClick={registerVol}> Register </div>
                               <div>OR</div>
                               <div>
                                    <text>Already have Account? </text>
-                                   <a className="loglinkvol" onClick={() => history.push("/loginvol")} title="cliick here to sign in" style={{ cursor: 'pointer' }}> Sign In here </a>
+                                   <a className="loglinkvol" onClick={() => history.push("/loginvol")} title="Click here to sign in" style={{ cursor: 'pointer' }}> Sign In here </a>
                               </div>
-                         </section>
+                         </div>
                     </div>
-
-               </div>
-               <Footer />
           </>
      )
 }

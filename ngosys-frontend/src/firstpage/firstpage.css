@@ -27,13 +27,14 @@ body{
     border-radius: 2%;
     margin-top: 18%;
     margin-left: 27%;
+    box-shadow: 0 0 10px 2px #4262ff;
 }
 
  .left{
     margin: 3%;
     text-align: center;
     text-transform: capitalize;
-    color: navy;
+    color: white;
 }
 
 .left H1{
