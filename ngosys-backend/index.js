@@ -611,7 +611,7 @@ app.post("/updateevents", (req, res) => {
 
 //Used to display events of NGO on their page
 
-app.post("/ngoevents/:ngoid", (req, res) => {
+app.get("/ngoevents/:ngoid", (req, res) => {
 
 
     Events.find({ ngoid: req.params.ngoid })
@@ -793,6 +793,87 @@ app.get('/transactionsdon/:donID', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+app.get("/getdonor/:id", async (req, res) => {
+    try {
+      const donorId = req.params.id;
+      const donor = await Donor.findById(donorId);
+  
+      if (!donor) {
+        return res.status(404).json({ message: "Donor not found" });
+      }
+  
+      // You can adjust the response structure based on your needs
+      const donorData = {
+        firstname: donor.firstname,
+        lastname: donor.lastname,
+        address: donor.address,
+        city: donor.city,
+        state: donor.state,
+        pnumber: donor.pnumber,
+        email: donor.email,
+      };
+  
+      res.json(donorData);
+    } catch (error) {
+      console.error("Error fetching donor data:", error.message);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+
+  app.get("/getvol/:id", async (req, res) => {
+    try {
+      const volID = req.params.id;
+      const vol = await Volunteer.findById(volID);
+  
+      if (!vol) {
+        return res.status(404).json({ message: "Volunteer not found" });
+      }
+  
+      // You can adjust the response structure based on your needs
+      const volData = {
+        firstname: vol.firstname,
+        lastname: vol.lastname,
+        address: vol.address,
+        city: vol.city,
+        state: vol.state,
+        pnumber: vol.pnumber,
+        email: vol.email,
+      };
+  
+      res.json(volData);
+    } catch (error) {
+      console.error("Error fetching Volunteer data:", error.message);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+
+  app.get("/getngo/:id", async (req, res) => {
+    try {
+      const ngoId = req.params.id;
+      const ngo = await NGO.findById(ngoId);
+  
+      if (!ngo) {
+        return res.status(404).json({ message: "NGO not found" });
+      }
+  
+      // You can adjust the response structure based on your needs
+      const ngoData = {
+            name: ngo.name,
+            address: ngo.address,
+            city: ngo.city,
+            state: ngo.state,
+            NGOID: ngo.NGOID,
+            pnumber: ngo.pnumber,
+            email: ngo.email,
+      };
+  
+      res.json(ngoData);
+    } catch (error) {
+      console.error("Error fetching NGO data:", error.message);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
   
 
 app.listen(9002, () => {
