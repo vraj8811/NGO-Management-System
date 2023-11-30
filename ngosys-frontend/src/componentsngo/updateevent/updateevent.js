@@ -16,6 +16,7 @@ const Updateevents = () => {
      const history = useHistory();
 
 
+
      const updateEvents = () => {
           const variables = {
 
@@ -245,7 +246,6 @@ const Updateevents = () => {
                     </div>
                     <br />
                </div>
-               <Footer />
           </>
      )
 }

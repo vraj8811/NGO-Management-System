@@ -4,11 +4,14 @@ import mongoose from "mongoose"
 import "dotenv/config";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Razorpay from "razorpay"
+import shortid from "shortid";
 
 import Volunteer from "./models/Volunteer.js";
 import NGO from "./models/NGO.js";
 import Events from "./models/Events.js";
 import Donor from "./models/Donor.js";
+import Transection from "./models/Transection.js";
 
 const app = express()
 app.use(express.json({ limit: "50mb", extended: true }));
@@ -21,6 +24,56 @@ mongoose.connect('mongodb://127.0.0.1:27017/ngosysdb', {
 }, () => {
 
     console.log("DB connected")
+});
+
+//for payment
+const razorpay = new Razorpay({
+	key_id: 'rzp_test_J2At7yvYLkugJD',
+	key_secret: 'mR8Rv51H0bnKeKXeYkrhcb8b'
+})
+
+//payment api
+app.post('/razorpay', async (req, res) => {
+	const payment_capture = 1
+	const amount = 1000
+	const currency = 'INR'
+
+	const options = {
+		amount: amount * 100,
+		currency,
+		receipt: shortid.generate(),
+		payment_capture
+	}
+
+	try {
+		const response = await razorpay.orders.create(options)
+		console.log(response)
+		res.json({
+			id: response.id,
+			currency: response.currency,
+			amount: response.amount
+		})
+	} catch (error) {
+		console.log(error)
+	}
+})
+
+// Endpoint to save a transaction
+app.post('/savetransaction', async (req, res) => {
+    try {
+        // Create a new transaction object based on the request body
+        const newTransaction = new Transection(req.body);
+
+        // Save the transaction to the database
+        await newTransaction.save();
+
+        // Send a success response
+        res.status(200).json({ message: 'Transaction saved successfully' });
+    } catch (error) {
+        // Handle errors and send an error response
+        console.error('Error saving transaction:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 app.post("/loginvol", async (req, res) => {
@@ -190,14 +243,14 @@ app.post("/registerngo", (req, res) => {
 app.post("/updatengo", (req, res) => {
     console.log("visited")
 
-    var oldngostatus = NGO.findOne({ NGOID: req.body.NGOID })
-    NGO.findOneAndUpdate({ NGOID: req.body.NGOID },
+    var oldngostatus = NGO.findById(req.params.id);
+    NGO.findOneAndUpdate(req.params.id ,
         {
             name: req.body.name || oldngostatus.name,
             address: req.body.address || oldngostatus.address,
             city: req.body.city || oldngostatus.city,
             state: req.body.state || oldngostatus.state,
-            NGOID: req.body.NGOID,
+            NGOID: req.body.NGOID || oldngostatus.NGOID ,
             pnumber: req.body.pnumber || oldngostatus.pnumber,
             email: req.body.email || oldngostatus.email
 
@@ -558,7 +611,7 @@ app.post("/updateevents", (req, res) => {
 
 //Used to display events of NGO on their page
 
-app.post("/ngoevents/:ngoid", (req, res) => {
+app.get("/ngoevents/:ngoid", (req, res) => {
 
 
     Events.find({ ngoid: req.params.ngoid })
@@ -677,6 +730,151 @@ app.get('/getallngo',async (req, res) => {
     }
   
   });
+
+// Endpoint to retrieve all transactions for a specific NGO
+app.get('/transactions/:ngoID', async (req, res) => {
+    const ID = req.params.ngoID;
+
+    try {
+        // Find all transactions for the specified NGO ID
+        const transactions = await Transection.find({ ngoid: ID }).populate('donorid').populate('ngoid');
+        //console.log(transactions);
+
+        // Send the transactions as a response
+        res.json(transactions);
+    } catch (error) {
+        // Handle errors and send an error response
+        console.error('Error retrieving transactions:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+app.post('/transactions', async (req, res) => {
+    const { ngoID, donorID, amount, date, razorpayPaymentId, razorpayOrderId, razorpaySignature } = req.body;
+  
+    try {
+      // Create a new transaction object
+      const transaction = new Transection({
+        ngoid: ngoID,
+        donorid: donorID,
+        amount,
+        date,
+        razorpayPaymentId,
+        razorpayOrderId,
+        razorpaySignature,
+      });
+  
+      // Save the transaction to the database
+      await transaction.save();
+  
+      // Send a success response
+      res.status(201).json({ message: 'Transaction successfully inserted' });
+    } catch (error) {
+      // Handle errors and send an error response
+      console.error('Error inserting transaction:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  // Endpoint to retrieve all transactions for a specific NGO
+app.get('/transactionsdon/:donID', async (req, res) => {
+    const ID = req.params.donID;
+
+    try {
+        // Find all transactions for the specified NGO ID
+        const transactions = await Transection.find({ donorid: ID }).populate('donorid').populate('ngoid');
+        //console.log(transactions);
+
+        // Send the transactions as a response
+        res.json(transactions);
+    } catch (error) {
+        // Handle errors and send an error response
+        console.error('Error retrieving transactions:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+app.get("/getdonor/:id", async (req, res) => {
+    try {
+      const donorId = req.params.id;
+      const donor = await Donor.findById(donorId);
+  
+      if (!donor) {
+        return res.status(404).json({ message: "Donor not found" });
+      }
+  
+      // You can adjust the response structure based on your needs
+      const donorData = {
+        firstname: donor.firstname,
+        lastname: donor.lastname,
+        address: donor.address,
+        city: donor.city,
+        state: donor.state,
+        pnumber: donor.pnumber,
+        email: donor.email,
+      };
+  
+      res.json(donorData);
+    } catch (error) {
+      console.error("Error fetching donor data:", error.message);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+
+  app.get("/getvol/:id", async (req, res) => {
+    try {
+      const volID = req.params.id;
+      const vol = await Volunteer.findById(volID);
+  
+      if (!vol) {
+        return res.status(404).json({ message: "Volunteer not found" });
+      }
+  
+      // You can adjust the response structure based on your needs
+      const volData = {
+        firstname: vol.firstname,
+        lastname: vol.lastname,
+        address: vol.address,
+        city: vol.city,
+        state: vol.state,
+        pnumber: vol.pnumber,
+        email: vol.email,
+      };
+  
+      res.json(volData);
+    } catch (error) {
+      console.error("Error fetching Volunteer data:", error.message);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+
+  app.get("/getngo/:id", async (req, res) => {
+    try {
+      const ngoId = req.params.id;
+      const ngo = await NGO.findById(ngoId);
+  
+      if (!ngo) {
+        return res.status(404).json({ message: "NGO not found" });
+      }
+  
+      // You can adjust the response structure based on your needs
+      const ngoData = {
+            name: ngo.name,
+            address: ngo.address,
+            city: ngo.city,
+            state: ngo.state,
+            NGOID: ngo.NGOID,
+            pnumber: ngo.pnumber,
+            email: ngo.email,
+      };
+  
+      res.json(ngoData);
+    } catch (error) {
+      console.error("Error fetching NGO data:", error.message);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+  
 
 app.listen(9002, () => {
     console.log("Started at 9002 port")

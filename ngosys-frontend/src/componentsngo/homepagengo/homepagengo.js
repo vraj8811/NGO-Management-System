@@ -23,7 +23,7 @@ const Homepagengo = () => {
     const logout = () => {
         localStorage.removeItem("currentUser");
         localStorage.removeItem("currentRegUser");
-        history.push("/loginngo")
+        history.push("/")
     }
 
 
@@ -31,33 +31,38 @@ const Homepagengo = () => {
     useEffect(() => {
 
 
-        //
-        axios.post(`http://localhost:9002/ngoevents/${user.user.NGOID}`).then(res => {
+        const fetcheventData = async () => {
+            try {
+                axios.get(`http://localhost:9002/ngoevents/${user.user.NGOID}`).then(res => {
 
-            setEvent(res.data.event)
-            console.log(res.data.event)
-            const timeElapsed = Date.now();
-            const today = new Date(timeElapsed);
+                    setEvent(res.data.event)
+                    console.log(res.data.event)
+                    const timeElapsed = Date.now();
+                    const today = new Date(timeElapsed);
 
-            var oldevents = [];
-            var newevents = [];
-            let i = 0;
-            for (i = 0; i < res.data.event.length; i++) {
-                if (res.data.event[i].edate < today.toISOString()) {
-                    oldevents.push(res.data.event[i]);
+                    var oldevents = [];
+                    var newevents = [];
+                    let i = 0;
+                    for (i = 0; i < res.data.event.length; i++) {
+                        if (res.data.event[i].edate < today.toISOString()) {
+                            oldevents.push(res.data.event[i]);
 
-                }
-                else {
-                    newevents.push(res.data.event[i]);
-                }
+                        }
+                        else {
+                            newevents.push(res.data.event[i]);
+                        }
 
+                    }
+                    setLessEvent(oldevents);
+                    setEvent(newevents);
+
+                })
             }
-            setLessEvent(oldevents);
-            setEvent(newevents);
-
-        })
-
-
+            catch (error) {
+                console.error("Error fetching event data:", error.message);
+            }
+        };
+        fetcheventData();
     }, [])
 
 
@@ -68,12 +73,13 @@ const Homepagengo = () => {
 
             <div class="mainheadervol">
                 <div class="logo">
-                <a href="/"><img src={img1} alt="logo"></img></a>
+                    <a href="/"><img src={img1} alt="logo"></img></a>
                 </div>
 
                 <nav>
                     <a href="/homepagengo">Home</a>
-                    <a href="/contactus">Contact</a>
+                    {/* <a href="/contactus">Contact</a> */}
+                    <a onClick={() => history.push("/transection")} style={{ cursor: "pointer" }}>Transection</a>
                     <a onClick={() => history.push("/updatengo")} style={{ cursor: "pointer" }}>Update Profile</a>
                     <a onClick={() => history.push("/addevents")} style={{ cursor: "pointer" }}>Add Event</a>
                     <button className="btn btn-outline-danger" onClick={logout}>Logout</button>
@@ -194,7 +200,6 @@ const Homepagengo = () => {
                         )}
                 </div>
             </div>
-            <Footer/>
         </div>
     )
 }

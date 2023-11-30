@@ -14,6 +14,10 @@ const ngoSchema = new mongoose.Schema({
         unique: true
     },
     passwd: String,
+    fund: {
+        type:Number,
+        default:0,
+    },
     tokens: [
         {
             token: {

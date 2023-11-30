@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "../../componentsngo/addevent/addevents.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom";
@@ -9,6 +9,32 @@ const Updatedon = () => {
     const history = useHistory();
     const user1 = JSON.parse(localStorage.getItem("currentUser"))
     console.log(user1.user._id)
+    const donorId = user1.user._id;
+
+    const [donorData, setDonorData] = useState({
+        firstname: "",
+        lastname: "",
+        address: "",
+        city: "",
+        state: "",
+        pnumber: "",
+        email: "",
+      });
+
+      useEffect(() => {
+        // Fetch donor data based on donorId
+        const fetchDonorData = async () => {
+          try {
+            const response = await axios.get(`http://localhost:9002/getdonor/${donorId}`);
+            const data = response.data; // Assuming the API returns donor data
+            setDonorData(data);
+          } catch (error) {
+            console.error("Error fetching donor data:", error.message);
+          }
+        };
+    
+        fetchDonorData();
+      }, [donorId]);
 
     const registerdon = () => {
         const variables = {
@@ -99,36 +125,36 @@ const Updatedon = () => {
                         <div className="fields">
 
                             <label> First Name: </label>
-                            <input type="text" name="firstname" value={firstname} placeholder={user1.user.firstname} onChange={onFirstNameChange}></input>
+                            <input type="text" name="firstname" value={firstname} placeholder={donorData.firstname} onChange={onFirstNameChange}></input>
 
                         </div>
                         <div className="fields">
 
                             <label> Last Name: </label>
-                            <input type="text" name="lastname" value={lastname} placeholder={user1.user.lastname} onChange={onLastNameChange}></input>
+                            <input type="text" name="lastname" value={lastname} placeholder={donorData.lastname} onChange={onLastNameChange}></input>
 
                         </div>
                         <div className="fields" style={{ display: 'flex', justifyContent: 'center' }}>
                             <label> Address: </label>
                             {/* <textarea rows="3" cols= "30" placeholder="Enter your address"></textarea> */}
-                            <textarea name="address" value={address} placeholder={user1.user.address} onChange={onAddressChange}></textarea>
+                            <textarea name="address" value={address} placeholder={donorData.address} onChange={onAddressChange}></textarea>
                         </div>
                         <div className="fields">
                             <label> City: </label>
-                            <input type="text" name="city" value={city} placeholder={user1.user.city} onChange={onCityChange}></input>
+                            <input type="text" name="city" value={city} placeholder={donorData.city} onChange={onCityChange}></input>
                         </div>
                         <div className="fields">
                             <label> State: </label>
-                            <input type="text" name="state" value={state} placeholder={user1.user.state} onChange={onStateChange} ></input>
+                            <input type="text" name="state" value={state} placeholder={donorData.state} onChange={onStateChange} ></input>
                         </div>
 
                         <div className="fields">
                             <label> Number: </label>
-                            <input type="text" name="contact" value={pnumber} placeholder={user1.user.pnumber} onChange={onPnumberChange}></input>
+                            <input type="text" name="contact" value={pnumber} placeholder={donorData.pnumber} onChange={onPnumberChange}></input>
                         </div>
                         <div className="fields">
                             <label> E-mail: </label>
-                            <input type="text" name="email" value={email} placeholder={user1.user.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)} ></input>
+                            <input type="text" name="email" value={email} placeholder={donorData.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)} ></input>
                             <span style={{
                                 fontWeight: 'bold',
                                 color: 'red',
@@ -147,7 +173,7 @@ const Updatedon = () => {
 
             </div>
 
-            <Footer />
+           
         </>
     )
 }

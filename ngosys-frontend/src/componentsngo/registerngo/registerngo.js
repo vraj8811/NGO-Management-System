@@ -124,7 +124,7 @@ const Registerngo = () => {
                               </div>
                          </div>
                     </div>
-          </>
+               </>
      )
 }
 

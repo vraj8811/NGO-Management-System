@@ -168,7 +168,7 @@ const Homepage = () => {
     const logout = () => {
         localStorage.removeItem("currentUser");
         localStorage.removeItem("currentRegUser");
-        history.push("/loginvol")
+        history.push("/")
     }
 
     let count = 0;
@@ -236,7 +236,7 @@ const Homepage = () => {
 
                 <nav>
                     <a href="/homepage">Home</a>
-                    <a href="/contactus">Contact</a>
+                    {/* <a href="/contactus">Contact</a> */}
                     <a onClick={() => history.push("/updatevol")} style={{ cursor: "pointer" }}>Update Profile </a>
                     <a style={{ cursor: 'pointer' }} onClick={() => history.push("/registeredevents")} >Registered Events</a>
                     <button className="btn btn-outline-danger " onClick={logout}>Logout</button>
@@ -282,8 +282,6 @@ const Homepage = () => {
                 </div>
             }
             <br />
-
-<Footer/>
         </div>
 
     )

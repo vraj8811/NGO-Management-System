@@ -10,7 +10,7 @@ const Navbar = () => {
     const logout = () => {
         localStorage.removeItem("currentUser");
         localStorage.removeItem("currentRegUser");
-        history.push("/logindon")
+        history.push("/")
     }
 
     return (
@@ -23,7 +23,7 @@ const Navbar = () => {
 
             <nav>
                 <a onClick={() => history.push("/homepagedonor")} style={{ cursor: 'pointer' }}>Home</a>
-                <a href="/contactus">Contact</a>
+                {/* <a href="/contactus">Contact</a> */}
                 <a onClick={() => history.push("/updatedon")} style={{ cursor: "pointer" }}>Update Profile </a>
                 {/* <a style={{ cursor: 'pointer' }} onClick={() => history.push("/registeredevents")} >Registered Events</a> */}
                 <button className="btn btn-outline-danger " onClick={logout}>Logout</button>

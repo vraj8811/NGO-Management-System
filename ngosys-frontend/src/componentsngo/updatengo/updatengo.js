@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "../addevent/addevents.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom";
@@ -9,6 +9,32 @@ import Footer from "../../commoncomponent/footer/footer2/footer2";
 const Updatengo = () => {
     const history = useHistory();
     const user1 = JSON.parse(localStorage.getItem("currentUser"))
+    const ngoid = user1.user._id;
+
+    const [ngoData, setNgoData] = useState({
+        name: "",
+        address: "",
+        city: "",
+        state: "",
+        NGOID: "",
+        pnumber: "",
+        email: "",
+      });
+
+      useEffect(() => {
+        // Fetch donor data based on donorId
+        const fetchngoData = async () => {
+          try {
+            const response = await axios.get(`http://localhost:9002/getngo/${ngoid}`);
+            const data = response.data; // Assuming the API returns donor data
+            setNgoData(data);
+          } catch (error) {
+            console.error("Error fetching donor data:", error.message);
+          }
+        };
+    
+        fetchngoData();
+      }, [ngoid]);
 
     const registerNgo = () => {
         const variables = {
@@ -17,7 +43,7 @@ const Updatengo = () => {
             address: address,
             city: city,
             state: state,
-            NGOID: user1.user.NGOID,
+            NGOID: NGOID,
             pnumber: pnumber,
             email: email,
 
@@ -25,7 +51,8 @@ const Updatengo = () => {
 
         if (emailErrorstatus === "false") {
             axios.post("http://localhost:9002/updatengo", variables)
-                .then(res => alert(res.data.message))
+                .then(res => alert(res.data.message));
+                history.push("/homepagengo");
         } else {
             alert("please re-enter your Email ID")
         }
@@ -37,6 +64,8 @@ const Updatengo = () => {
     const [state, setState] = useState("")
     const [pnumber, setPnumber] = useState("")
     const [email, setEmail] = useState("")
+    const [NGOID, setNGOID] = useState("")
+
 
     const onNameChange = (event) => {
         setName(event.currentTarget.value)
@@ -57,6 +86,9 @@ const Updatengo = () => {
     }
     const onEmailChange = (event) => {
         setEmail(event.currentTarget.value)
+    }
+    const onNGOIDChange = (event) => {
+        setNGOID(event.currentTarget.value)
     }
 
 
@@ -95,30 +127,37 @@ const Updatengo = () => {
 
                             <br></br>
                             <label> NGO Name: </label>
-                            <input type="text" name="name" value={name} placeholder={user1.user.name} onChange={onNameChange}></input>
+                            <input type="text" name="name" value={name} placeholder={ngoData.name} onChange={onNameChange}></input>
 
                         </div>
                         <div className="fields" style={{ display: 'flex', justifyContent: 'center' }}>
                             <label> Address: </label>
                             {/* <textarea rows="3" cols= "30" placeholder="Enter your address"></textarea> */}
-                            <textarea name="address" value={address} placeholder={user1.user.address} onChange={onAddressChange} />
+                            <textarea name="address" value={address} placeholder={ngoData.address} onChange={onAddressChange} />
                         </div>
                         <div className="fields">
                             <label> City: </label>
-                            <input type="text" name="city" value={city} placeholder={user1.user.city} onChange={onCityChange}></input>
+                            <input type="text" name="city" value={city} placeholder={ngoData.city} onChange={onCityChange}></input>
                         </div>
                         <div className="fields">
                             <label> State: </label>
-                            <input type="text" name="state" value={state} placeholder={user1.user.state} onChange={onStateChange} ></input>
+                            <input type="text" name="state" value={state} placeholder={ngoData.state} onChange={onStateChange} ></input>
                         </div>
 
                         <div className="fields">
                             <label> Number: </label>
-                            <input type="text" name="contact" value={pnumber} placeholder={user1.user.pnumber} onChange={onPnumberChange}></input>
+                            <input type="text" name="contact" value={pnumber} placeholder={ngoData.pnumber} onChange={onPnumberChange}></input>
                         </div>
+
+                        <div className="fields">
+                            <label> NGOID: </label>
+                            <input type="text" name="state" value={NGOID} placeholder={ngoData.NGOID} onChange={onNGOIDChange} ></input>
+                        </div>
+
+
                         <div className="fields">
                             <label> E-mail: </label>
-                            <input type="text" name="email" value={email} placeholder={user1.user.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)} ></input>
+                            <input type="text" name="email" value={email} placeholder={ngoData.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)} ></input>
                             <span style={{
                                 fontWeight: 'bold',
                                 color: 'red',
@@ -137,7 +176,6 @@ const Updatengo = () => {
                 </div>
                 <br />
             </div>
-            <Footer />
         </>
     )
 }

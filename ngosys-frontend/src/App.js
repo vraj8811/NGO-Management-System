@@ -21,6 +21,8 @@ import Updatedon from './componentsdonor/updatedon/updatedon';
 import Updateevents from './componentsngo/updateevent/updateevent';
 import Donatemoney from './componentsdonor/donatemoney/donatemoney';
 import Donatethings from './componentsdonor/donatethings/donatethings';
+import Transection from './componentsngo/transection/transection';
+import Viewtrans from './componentsdonor/viewtrans/viewtrans';
 
 import {
   BrowserRouter as Router,
@@ -72,6 +74,16 @@ function App() {
           <Route path="/registerdon">
 
             <Registerdon />
+          </Route>
+
+          <Route path="/viewtrans">
+
+            <Viewtrans />
+          </Route>
+
+          <Route path="/transection">
+
+            <Transection />
           </Route>
 
           <Route path="/homepagedonor" >
