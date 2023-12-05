@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import "../addevent/addevents.css"
+import "../updatengo/updatengo.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom";
 import Navbar from '../../commoncomponent/navbarngo/navbar';
@@ -113,68 +113,50 @@ const Updatengo = () => {
 
     return (
         <>
-            <div id="backuser">
+            <div className="mainDivUP">
                 <Navbar />
-                <div className="addevents" style={{ display: 'flex', justifyContent: 'center' }}>
-
-                    <br></br>
-
-                    <div className="addevents_box" >
-                        <h1>Please fill out the fields you wish to update: </h1>
-                        <br></br>
-
-                        <div className="fields"  >
-
-                            <br></br>
-                            <label> NGO Name: </label>
-                            <input type="text" name="name" value={name} placeholder={ngoData.name} onChange={onNameChange}></input>
-
+                    <div className="UP_box" >
+                        <h1 class="headerUP">Update Profile</h1>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> NGO Name: </label>
+                            <input type="text" name="name" value={name} placeholder={ngoData.name} onChange={onNameChange} className="inputUP"></input>
                         </div>
-                        <div className="fields" style={{ display: 'flex', justifyContent: 'center' }}>
-                            <label> Address: </label>
-                            {/* <textarea rows="3" cols= "30" placeholder="Enter your address"></textarea> */}
-                            <textarea name="address" value={address} placeholder={ngoData.address} onChange={onAddressChange} />
+                        <div className="fieldsUP">
+                            <label className="labelUP"> Address: </label>
+                            <textarea name="address" value={address} placeholder={ngoData.address} onChange={onAddressChange} className="inputUP"/>
                         </div>
-                        <div className="fields">
-                            <label> City: </label>
-                            <input type="text" name="city" value={city} placeholder={ngoData.city} onChange={onCityChange}></input>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> City: </label>
+                            <input type="text" name="city" value={city} placeholder={ngoData.city} onChange={onCityChange} className="inputUP"></input>
                         </div>
-                        <div className="fields">
-                            <label> State: </label>
-                            <input type="text" name="state" value={state} placeholder={ngoData.state} onChange={onStateChange} ></input>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> State: </label>
+                            <input type="text" name="state" value={state} placeholder={ngoData.state} onChange={onStateChange} className="inputUP"></input>
                         </div>
 
-                        <div className="fields">
-                            <label> Number: </label>
-                            <input type="text" name="contact" value={pnumber} placeholder={ngoData.pnumber} onChange={onPnumberChange}></input>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> Number: </label>
+                            <input type="text" name="contact" value={pnumber} placeholder={ngoData.pnumber} onChange={onPnumberChange} className="inputUP"></input>
                         </div>
 
-                        <div className="fields">
-                            <label> NGOID: </label>
-                            <input type="text" name="state" value={NGOID} placeholder={ngoData.NGOID} onChange={onNGOIDChange} ></input>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> UPI ID: </label>
+                            <input type="text" name="state" value={NGOID} placeholder={ngoData.NGOID} onChange={onNGOIDChange} className="inputUP"></input>
                         </div>
 
 
-                        <div className="fields">
-                            <label> E-mail: </label>
-                            <input type="text" name="email" value={email} placeholder={ngoData.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)} ></input>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> E-mail: </label>
+                            <div className="emailF">
+                            <input type="text" name="email" value={email} placeholder={ngoData.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)} className="inputUP" style={{width: '100%'}}></input>
                             <span style={{
                                 fontWeight: 'bold',
                                 color: 'red',
                             }}>{emailError}</span>
-                            <br/>
-                            <span style={{
-                                fontWeight: 'bold',
-                                color: 'green',
-                            }}>Please enter your new or old Email ID. </span>
+                            </div>
                         </div>
-                        <br />
-                        <div className="btn btn-outline-success btn-lg " style={{ width: '200px' }} onClick={registerNgo}> Update Details </div>
-
+                        <div className="btn" style={{ width: '30%', marginTop: '3%', marginBottom: '0%'}} onClick={registerNgo}> Update Details </div>
                     </div>
-
-                </div>
-                <br />
             </div>
         </>
     )

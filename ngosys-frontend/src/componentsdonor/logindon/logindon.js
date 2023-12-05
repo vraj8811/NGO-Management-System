@@ -76,7 +76,7 @@ const Logindon = () => {
                 <a onClick={() => history.push("/")} style={{cursor:'pointer'}}>&lt;&lt; <b>Back</b></a>
                         <div className="rightdon">
                             <maindon>
-                                <h1>Login As Donor</h1>
+                                <h1 id="heading">Login As Donor</h1>
                                 <field className="fields">
                                     <label>Email: </label>
                                     {/* <input type="email" name="email" value={user.email} onChange={handleChange} placeholder="Enter email address"></input>   */}

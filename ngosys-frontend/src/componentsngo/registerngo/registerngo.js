@@ -72,49 +72,51 @@ const Registerngo = () => {
           <a onClick={() => history.push("/")} style={{cursor:'pointer'}}>&lt;&lt; <b>Home</b></a>
                     <div className="regngobox">
                          <div className="formB">
-                              <h1>Register As NGO</h1>
-                              <div className="fields">
+                              <h1 id="heading">Register As NGO</h1>
+                              <div className="fieldsNGO">
                                    <label> NGO Name: </label>
-                                   <input type="text" name="name" value={user.name} placeholder="Enter NGO name" onChange={handleChange}></input>
+                                   <input type="text" name="name" value={user.name} placeholder="Enter NGO Name" onChange={handleChange} class="inputNGOR"></input>
                               </div>
 
-                              <div className="fields">
+                              <div className="fieldsNGO">
                                    <label> Address: </label>
                                    {/* <textarea rows="3" cols= "30" placeholder="Enter your address"></textarea> */}
-                                   <textarea name="address" value={user.address} placeholder="Enter Address" onChange={handleChange}></textarea>
+                                   <textarea name="address" value={user.address} placeholder="Enter Address" onChange={handleChange} class="inputNGOR"></textarea>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsNGO">
                                    <label> City: </label>
-                                   <input type="text" name="city" value={user.city} placeholder="Enter City" onChange={handleChange}></input>
+                                   <input type="text" name="city" value={user.city} placeholder="Enter City" onChange={handleChange} class="inputNGOR"></input>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsNGO">
                                    <label> State: </label>
-                                   <input type="text" name="state" value={user.state} placeholder="Enter State" onChange={handleChange} ></input>
+                                   <input type="text" name="state" value={user.state} placeholder="Enter State" onChange={handleChange} class="inputNGOR"></input>
                               </div>
 
-                              <div className="fields">
+                              <div className="fieldsNGO">
                                    <label> UPI ID: </label>
-                                   <input type="text" name="NGOID" value={user.NGOID} placeholder="Enter UPI ID" onChange={handleChange} ></input>
+                                   <input type="text" name="NGOID" value={user.NGOID} placeholder="Enter UPI ID" onChange={handleChange} class="inputNGOR"></input>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsNGO">
                                    <label> Contact Number: </label>
-                                   <input type="text" name="pnumber" value={user.pnumber} placeholder="Enter Contact Number" onChange={handleChange}></input>
+                                   <input type="text" name="pnumber" value={user.pnumber} placeholder="Enter Contact Number" onChange={handleChange} class="inputNGOR"></input>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsNGO">
                                    <label> E-mail: </label>
-                                   <input type="email" name="email" value={user.email} placeholder="Enter E-mail" onChange={handleChange} onInput={(e) => validateEmail(e)} ></input>
+                                   <div className="emailF">
+                                   <input type="email" name="email" value={user.email} placeholder="Enter E-mail" onChange={handleChange} onInput={(e) => validateEmail(e)} class="inputNGOR" style={{width: '100%'}}></input>
                                    <span style={{
                                         fontWeight: 'bold',
                                         color: 'red',
                                    }}>{emailError}</span>
+                                   </div>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsNGO">
                                    <label> Password: </label>
-                                   <input type="password" name="passwd" value={user.passwd} placeholder="Enter Password" onChange={handleChange} ></input>
+                                   <input type="password" name="passwd" value={user.passwd} placeholder="Enter Password" onChange={handleChange} class="inputNGOR"></input>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsNGO">
                                    <label>Confirm Password: </label>
-                                   <input type="password" name="reenterpassword" value={user.reenterpassword} placeholder="Re-Enter Password" onChange={handleChange} ></input>
+                                   <input type="password" name="reenterpassword" value={user.reenterpassword} placeholder="Re-Enter Password" onChange={handleChange} class="inputNGOR"></input>
                               </div>
                               <button id="rNGO" onClick={registerNgo}> Register </button>
                               <div>OR</div>

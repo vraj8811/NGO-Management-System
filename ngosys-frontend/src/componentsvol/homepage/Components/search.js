@@ -22,27 +22,16 @@ const Searchfeature = (props) => {
 
 
     return (
-        <div>
-            
-<form class="form-inline my-2 my-lg-0" style={{ display: 'flex', justifyContent: 'center', marginRight: '20px' }}>
-      <input class="form-control mr-sm-2" 
-             type="search" placeholder="Search" 
-             aria-label="Search" 
-             style={{width:'500px'}} 
-             value={Searchterms}
-             onChange={onchangeSearch}
-      />
-      <button class="btn btn-outline-success my-2 my-sm-0 disabled" type="submit">Search</button>
-    </form>
-
-    {/* <div>
-            <Search
-                value={Searchterms}
-                onChange={onchangeSearch}
-                placeholder="Search By Typing..."
+        <div>         
+        <form class="form-inline my-2 my-lg-0" style={{ display: 'flex', justifyContent: 'center', marginRight: '20px' }}>
+            <input class="form-control mr-sm-2" 
+                    type="search" placeholder="Search" 
+                    aria-label="Search" 
+                    style={{width:'500px'}} 
+                    value={Searchterms}
+                    onChange={onchangeSearch}
             />
-        </div> */}
-
+        </form>
         </div>
 
     );

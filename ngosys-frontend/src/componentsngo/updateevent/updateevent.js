@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Navbar from '../../commoncomponent/navbarngo/navbar';
 import { Convert } from 'mongo-image-converter';
-import Footer from "../../commoncomponent/footer/footer2/footer2";
 
 const Updateevents = () => {
 
@@ -134,31 +133,23 @@ const Updateevents = () => {
 
      return (
           <>
-               <div id="back">
+               <div id="addEventDiv">
                     <Navbar />
-                    <div className="addevents" style={{ display: 'flex', justifyContent: 'center' }}>
-
-                         <br></br>
-
                          <div className="addevents_box" >
-                              <h1 style={{ display: 'flex', justifyContent: 'center' }}>Update Event Details</h1>
-                              <h4 style={{ display: 'flex', justifyContent: 'center' }}>Please fill the fields you wish to edit:</h4>
-                              <br></br>
-
-                              <div className="fields">
-                                   <label htmlFor="file"> Choose Images: </label>
-                                   <input type="file" filename="Images" style={{ width: '250px' }} onChange={(e) => { onImageChange(e.target.files[0]) }}></input>
+                              <h1 className="headerAE">Update Event Details</h1>
+                              <div className="fieldsAddEvent">
+                                   <label htmlFor="file" className="labelAE"> Choose Image: </label>
+                                   <input type="file" filename="Images" onChange={(e) => { onImageChange(e.target.files[0]) }} className="inputAE"></input>
                               </div>
 
-                              <div className="fields" >
-
-                                   <label> Event Name: </label>
-                                   <input type="text" name="name" value={name} placeholder={eventdata.name} onChange={onNameChange}></input>
+                              <div className="fieldsAddEvent">
+                                   <label className="labelAE"> Event Name: </label>
+                                   <input type="text" name="name" value={name} placeholder={eventdata.name} onChange={onNameChange} className="inputAE"></input>
                               </div>
-                              <br />
-                              <div className="fields">
-                                   <label> Category: </label>
-                                   <select name="category" value={category} placeholder={eventdata.category} onChange={onCategoryChange}>
+                              
+                              <div className="fieldsAddEvent">
+                                   <label className="labelAE"> Category: </label>
+                                   <select name="category" value={category} placeholder={eventdata.category} onChange={onCategoryChange} className="inputAE">
                                         <option value="Human">Human</option>
                                         <option value="Animal">Animal</option>
                                         <option value="Birds">Birds</option>
@@ -166,28 +157,13 @@ const Updateevents = () => {
                                         <option value="Nature">Nature</option>
                                         <option value="Other">Other</option>
                                    </select>
-
-                                   {/* <input type="text"  ></input> */}
-
-                              </div> <br />
-                              <div className="fields">
-
-                                   <label style={{ marginLeft: '-190px' }}> NGOID: </label>
-                                   <label> {user.user.NGOID}</label>
-
                               </div>
-                              <div className="fields">
-                                   <label> Organizer: </label>
-                                   <input type="text" name="organizer" value={organizer} placeholder={eventdata.organizer} onChange={onOrganizerChange}></input>
+                              <div className="fieldsAddEvent">
+                                   <label className="labelAE"> Organizer: </label>
+                                   <input type="text" name="organizer" value={organizer} placeholder={eventdata.organizer} onChange={onOrganizerChange} className="inputAE"></input>
                               </div>
-                              <br />
-                              <div style={{
-                                   margin: 'auto',
-                                   display: 'block',
-                                   width: 'fit-content'
-                              }}
-                              >
-                                   <label style={{ paddingRight: '10px' }}>Event Date:   </label>
+                              <div className="fieldsAddEvent">
+                                   <label className="labelAE">Event Date:   </label>
                                    <TextField
                                         name="edate"
                                         type="date"
@@ -196,56 +172,49 @@ const Updateevents = () => {
                                         InputLabelProps={{
                                              shrink: true,
                                         }}
-                                        placeholder={eventdata.edate}
+                                        placeholder={eventdata.edate} className="inputAE"
                                    />
                               </div>
-                              <div className="fields">
-                                   <label> Time: </label>
-                                   <input type="time" name="etime" value={etime} placeholder={eventdata.etime} onChange={onEtimeChange}></input>
+                              <div className="fieldsAddEvent">
+                                   <label className="labelAE"> Time: </label>
+                                   <input type="time" name="etime" value={etime} placeholder={eventdata.etime} onChange={onEtimeChange} className="inputAE"></input>
                               </div>
 
-                              <div className="fields" style={{ display: 'flex', justifyContent: 'center' }}>
-                                   <label > Address: </label>
-                                   <textarea name="address" value={address} placeholder={eventdata.address} onChange={onAddressChange} />
+                              <div className="fieldsAddEvent" style={{ display: 'flex', justifyContent: 'center' }}>
+                                   <label className="labelAE"> Venue: </label>
+                                   <textarea name="address" value={address} placeholder={eventdata.address} onChange={onAddressChange} className="inputAE"/>
                               </div>
-                              <div className="fields">
-                                   <label> City: </label>
-                                   <input type="text" name="city" value={city} placeholder={eventdata.city} onChange={onCityChange}></input>
+                              <div className="fieldsAddEvent">
+                                   <label className="labelAE"> City: </label>
+                                   <input type="text" name="city" value={city} placeholder={eventdata.city} onChange={onCityChange} className="inputAE"></input>
                               </div>
-                              <div className="fields">
-                                   <label> State: </label>
-                                   <input type="text" name="state" value={state} placeholder={eventdata.state} onChange={onStateChange} ></input>
+                              <div className="fieldsAddEvent">
+                                   <label className="labelAE"> State: </label>
+                                   <input type="text" name="state" value={state} placeholder={eventdata.state} onChange={onStateChange} className="inputAE"></input>
                               </div>
 
 
-                              <div className="fields">
-                                   <label> Contact: </label>
-                                   <input type="text" name="contact" value={contact} placeholder={eventdata.contact} onChange={onContactChange}></input>
+                              <div className="fieldsAddEvent">
+                                   <label className="labelAE"> Contact: </label>
+                                   <input type="text" name="contact" value={contact} placeholder={eventdata.contact} onChange={onContactChange} className="inputAE"></input>
                               </div>
-                              <div className="fields">
-                                   <label> E-mail: </label>
-                                   <input type="text" name="email" value={email} placeholder={eventdata.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)}></input>
+                              <div className="fieldsAddEvent">
+                                   <label className="labelAE"> E-mail: </label>
+                                   <div className="emailF">
+                                   <input type="text" name="email" value={email} placeholder={eventdata.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)} className="inputAE" style={{width: '100%'}}></input>
                                    <span style={{
                                         fontWeight: 'bold',
                                         color: 'red',
                                    }}>{emailError}</span>
-                                   <br />
-                                   <span style={{
-                                        fontWeight: 'bold',
-                                        color: 'green',
-                                   }}>Please enter your new or old Email ID. </span>
+                                   </div>
                               </div>
-                              <div className="fields" style={{ display: 'flex', justifyContent: 'center' }}>
-                                   <label> Description: </label>
-                                   <textarea name="description" value={description} placeholder={eventdata.description} onChange={onDescriptionChange} />
+                              <div className="fieldsAddEvent" style={{ display: 'flex', justifyContent: 'center' }}>
+                                   <label className="labelAE"> Description: </label>
+                                   <textarea name="description" value={description} placeholder={eventdata.description} onChange={onDescriptionChange} className="inputAE"/>
                               </div>
-                              <br />
-                              <div className="btn btn-outline-success btn-lg " style={{ width: '200px' }} onClick={updateEvents}> Update Event </div>
+                              <div className="btn" onClick={updateEvents}> Update Event </div>
                          </div>
-
                     </div>
-                    <br />
-               </div>
           </>
      )
 }

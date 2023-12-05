@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
+import "../transection/transaction.css"
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import img1 from "../../firstpage/images/output-onlinepngtools.png"
-import Footer from "../../commoncomponent/footer/footer2/footer2";
-
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Navbar from '../../commoncomponent/navbarngo/navbar';
 
 
 
@@ -44,35 +37,20 @@ const Transection = () => {
 
 
     return (
-        <div>
-            <div class="mainheadervol">
-                <div class="logo">
-                    <a href="/"><img src={img1} alt="logo"></img></a>
-                </div>
-
-                <nav>
-                    <a href="/homepagengo">Home</a>
-                    {/* <a href="/contactus">Contact</a> */}
-                    <a onClick={() => history.push("/transection")} style={{ cursor: "pointer" }}>Transection</a>
-                    <a onClick={() => history.push("/updatengo")} style={{ cursor: "pointer" }}>Update Profile</a>
-                    <a onClick={() => history.push("/addevents")} style={{ cursor: "pointer" }}>Add Event</a>
-                    <button className="btn btn-outline-danger" onClick={logout}>Logout</button>
-                </nav>
-            </div>
-
+        <div className="mainDivT">
+            <Navbar/>
             <div className="container">
-              <br></br>
-                <h1 align="center">All Transections</h1>
+                <h1 style={{fontWeight: 'bold', marginBottom: '1.5%'}}>Funds Donated</h1>
                 {transList.length === 0 ? (
-                    <p>No Transection History available</p>
+                    <p>No transaction history available.</p>
                 ) : (
                     <table className="table">
-                        <thead>
+                        <thead className="thead table-dark">
                             <tr>
                                 <th>Index</th>
-                                <th>Donor Name</th>
-                                <th>Donor Email</th>
-                                <th>Donor Phone Number</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Donor Contact No.</th>
                                 <th>Date</th>
                                 <th>Amount</th>
                                 <th>Transection ID</th>

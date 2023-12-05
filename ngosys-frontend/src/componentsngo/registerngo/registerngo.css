@@ -9,18 +9,20 @@
     box-shadow: 0 0 10px 2px #4262ff;
     padding-top: 1.25%;
     padding-bottom: 1%;
-    margin-left: 40%;
+    margin: 2% 42%;
 }
 
-input
+.inputNGOR
 {
     border-radius: 8px;
     border: 2px solid #dddfe2;
     outline: none;
     color: #1d2129;
-    padding: 0.25rem 0.75rem;
+    padding: 0.30rem 0.75rem;
     font-size: 1rem; 
     margin-bottom: 1%;
+    width: 70%;
+    margin-top: 3%;
 }
 
 textarea
@@ -29,15 +31,11 @@ textarea
     border: 2px solid #dddfe2;
     outline: none;
     color: #1d2129;
-    padding: 0.25rem 1.30rem;
+    padding: 0.25rem 0.75rem;
     font-size: 1rem; 
     margin-bottom: 1%;
     margin-top: 1%;
-}
-
-label
-{
-    text-align: right;
+    width: 70%;
 }
 
 #rNGO:hover
@@ -63,4 +61,25 @@ label
 
 h1{
     margin-bottom: 3%;
+    margin-top: 2%;
+}
+
+.fieldsNGO
+{
+    display: flex;
+    justify-content: center;
+}
+
+label
+{
+    width: 30%;
+}
+
+.emailF
+{
+    margin-left: 4%;
+    display: flex;
+    flex-direction: column;
+    width: 82%;
+    justify-content: flex-start;
 }

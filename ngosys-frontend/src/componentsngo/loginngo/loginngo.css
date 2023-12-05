@@ -60,3 +60,9 @@ input
     display: flex;
     flex-direction: column;
 }
+
+#heading
+{
+    color: white;
+    font-weight: bold;
+}

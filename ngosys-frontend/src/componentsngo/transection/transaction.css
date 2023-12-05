@@ -1,0 +1,16 @@
+.mainDivT{
+    background: whitesmoke;
+    position: relative;
+    top: 0;
+    height: 1000vh;
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.table
+{
+    background-color: white;
+    margin-top: 0;
+    text-align: center;
+}

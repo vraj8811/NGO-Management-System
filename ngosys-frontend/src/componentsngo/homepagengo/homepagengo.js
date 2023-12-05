@@ -2,14 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./homepagengo.css"
 import { useHistory } from "react-router-dom";
-import img1 from "../../firstpage/images/output-onlinepngtools.png"
-import Footer from "../../commoncomponent/footer/footer2/footer2";
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 const user = JSON.parse(localStorage.getItem("currentUser"))
@@ -70,52 +66,40 @@ const Homepagengo = () => {
 
     return (
         <div className="homepagengo" >
-
-            <div class="mainheadervol">
-                <div class="logo">
-                    <a href="/"><img src={img1} alt="logo"></img></a>
-                </div>
-
+            <div class="mainheaderngo">
                 <nav>
-                    <a href="/homepagengo">Home</a>
-                    {/* <a href="/contactus">Contact</a> */}
-                    <a onClick={() => history.push("/transection")} style={{ cursor: "pointer" }}>Transection</a>
-                    <a onClick={() => history.push("/updatengo")} style={{ cursor: "pointer" }}>Update Profile</a>
-                    <a onClick={() => history.push("/addevents")} style={{ cursor: "pointer" }}>Add Event</a>
-                    <button className="btn btn-outline-danger" onClick={logout}>Logout</button>
+                    <a href="/homepagengo" className="navLink">Home</a>
+                    <a onClick={() => history.push("/addevents")} className="navLink">Add Event</a>
+                    <a onClick={() => history.push("/transection")} className="navLink">Fund Donation</a>
+                    <a onClick={() => history.push("/updatengo")} className="navLink">Update Profile</a>
+                    <button className="navLink" onClick={logout} style={{background: 'none', border: '0'}}>Logout</button>
                 </nav>
             </div>
             <div style={{ width: '90%', margin: '3rem auto' }}>
-
-                <h1 style={{ display: 'flex', justifyContent: 'center' }}>Welcome, {user.user.name}!!!</h1>
-                <br />
-                <h1 style={{ display: 'flex', justifyContent: 'center', textDecoration: 'underline' }}>Here are your Upcoming events</h1>
-                <br />
-
+                <h1 style={{ display: 'flex', justifyContent: 'center', fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sansSerif", fontWeight: 600 }}>Upcoming Events</h1>
                 <div className="row" >
                     {
                         Event.map(event =>
-                            <div class="col-3 mx-auto ">
+                            <div class="col-3">
                                 <Card
                                     style={{
-                                        width: 320,
-                                        height: 320,
+                                        width: '100%',
+                                        height: '100%',
                                         backgroundColor: "",
-
-                                        boxShadow: '0px 0px 10px 5px rgb(123, 255, 211)'
+                                        boxShadow: '0px 0px 6px 1px #4262ff'
                                     }}
                                 >
-                                    <CardContent>
+                                    <CardContent style={{ paddingBottom: '0%' }}>
                                         <Typography
-                                            style={{ fontSize: 14, display: 'flex', justifyContent: 'center' }}
+                                            style={{ fontSize: 14, display: 'flex', justifyContent: 'center', marginBottom: '3%' }}
                                             color="textSecondary"
                                             gutterBottom
                                         >
                                             <img src={event.images} alt={event.images} class="rounded" style={{ height: '100px' }}></img>
 
                                         </Typography>
-                                        <Typography variant="h6" component="h2">
-                                            Name: {event.name}
+                                        <Typography variant="h6" component="h2" style={{ marginBottom: '3%', marginTop: '7%', alignContent: 'center', display: 'flex' }}>
+                                        {event.name}
                                         </Typography>
                                         <Typography
                                             color="textSecondary"
@@ -131,49 +115,39 @@ const Homepagengo = () => {
                                             City: {event.city}
                                         </Typography>
                                     </CardContent>
-                                    <CardActions>
-                                        <a href={`/Eventngo/${event._id}`}><button className="btn btn-outline-info" >More</button></a>
+                                    <CardActions style={{ paddingBottom: '3%' }}>
+                                        <a href={`/Eventngo/${event._id}`}><button className="btn">More</button></a>
                                     </CardActions>
                                 </Card>
-                                <br />
-                                <br />
-
+                                <br/>
                             </div>
-
-
                         )}
                 </div>
-
-
-                <br />
-                <h1 style={{ display: 'flex', justifyContent: 'center', textDecoration: 'underline' }}>Here are your Previous events</h1>
-                <br />
-                <br />
-                <div className="row">
+                <h1 style={{ display: 'flex', justifyContent: 'center', fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sansSerif", fontWeight: 600}}>Previous Events</h1>
+                <div className="row" style={{marginTop: '0%'}}>
                     {
                         LessEvent.map(event =>
 
-                            <div class="col-3 mx-auto ">
+                            <div class="col-3">
                                 <Card
                                     style={{
-                                        width: 320,
-                                        height: 320,
+                                        width: '300px',
+                                        height: '100%',
                                         backgroundColor: "",
-
-                                        boxShadow: '0px 0px 10px 5px rgb(123, 255, 211)'
+                                        boxShadow: '0px 0px 6px 1px #4262ff'
                                     }}
                                 >
-                                    <CardContent>
+                                    <CardContent style={{ paddingBottom: '0%' }}>
                                         <Typography
-                                            style={{ fontSize: 14, display: 'flex', justifyContent: 'center' }}
+                                            style={{ fontSize: 14, display: 'flex', justifyContent: 'center', marginBottom: '3%' }}
                                             color="textSecondary"
                                             gutterBottom
                                         >
                                             <img src={event.images} alt={event.images} class="rounded" style={{ height: '100px' }}></img>
 
                                         </Typography>
-                                        <Typography variant="h6" component="h2">
-                                            Name: {event.name}
+                                        <Typography variant="h6" component="h2" style={{ marginBottom: '3%', marginTop: '7%', alignContent: 'center', display: 'flex' }}>
+                                        {event.name}
                                         </Typography>
                                         <Typography
                                             color="textSecondary"
@@ -181,7 +155,7 @@ const Homepagengo = () => {
                                             Date: {event.edate.substr(0, 10)}
                                         </Typography>
                                         <Typography color="textSecondary">
-                                            NGO Name: {event.organizer}
+                                            Organizer Name: {event.organizer}
                                         </Typography>
                                         <Typography
                                             color="textSecondary"
@@ -189,13 +163,11 @@ const Homepagengo = () => {
                                             City: {event.city}
                                         </Typography>
                                     </CardContent>
-                                    <CardActions>
-                                        <a href={`/Eventngo/${event._id}`}><button className="btn btn-outline-info" >More</button></a>
+                                    <CardActions style={{ paddingBottom: '3%' }}>
+                                        <a href={`/Eventngo/${event._id}`}><button className="btn" >More</button></a>
                                     </CardActions>
                                 </Card>
-                                <br />
-                                <br />
-
+                                <br/>
                             </div>
                         )}
                 </div>

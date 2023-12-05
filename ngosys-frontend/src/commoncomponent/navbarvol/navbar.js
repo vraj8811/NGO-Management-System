@@ -14,25 +14,14 @@ const Navbar = () => {
     }
 
     return (
-
-
-        <section className="mainheader">
-            <div className="logo">
-                <img src={img1} alt="logo"></img>
-            </div>
-
+        <div className="mainheader">
             <nav>
-                <a onClick={() => history.push("/homepage")} style={{ cursor: 'pointer' }}>Home</a>
-                {/* <a href="/contactus">Contact</a> */}
-                <a onClick={() => history.push("/updatevol")} style={{ cursor: "pointer" }}>Update Profile </a>
-                <a style={{ cursor: 'pointer' }} onClick={() => history.push("/registeredevents")} >Registered Events</a>
-                <button className="btn btn-outline-danger " onClick={logout}>Logout</button>
-
-
+                <a onClick={() => history.push("/homepage")}>Home</a>
+                <a onClick={() => history.push("/registeredevents")} >Registered Events</a>
+                <a onClick={() => history.push("/updatevol")}>Update Profile </a>
+                <button className="navLink" onClick={logout}>Logout</button>
             </nav>
-        </section>
-
+        </div>
     )
 }
-
 export default Navbar
