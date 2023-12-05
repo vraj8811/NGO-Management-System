@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import "./logindon.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom";
-import Navbar from "../../commoncomponent/navbar";
-import img1 from "../../firstpage/images/logart.png"
-import Footer from "../../commoncomponent/footer/footer2/footer2";
-
 
 const Logindon = () => {
     const history = useHistory();
@@ -75,46 +71,36 @@ const Logindon = () => {
     return (
 
         <>
-            <Navbar />
-            <logpage className="logindon">
-                <br></br>
-
-                {/* <h1>Login as a Donor</h1> */}
-                <br></br>
-                <logdon style={{ display: 'flex', justifyContent: 'center' }}>
-
-                    <section className="Formlogdon" >
-                        <section className="leftdon">
-                            <img src={img1} alt="login picture" width="500px" />
-                        </section>
-
-                        <section className="rightdon">
-                            <maindon  >
-                                <h1>Login as a Donor</h1><br />
+            <logpage>
+                <logdon>
+                <a onClick={() => history.push("/")} style={{cursor:'pointer'}}>&lt;&lt; <b>Back</b></a>
+                        <div className="rightdon">
+                            <maindon>
+                                <h1 id="heading">Login As Donor</h1>
                                 <field className="fields">
-                                    <label style={{ paddingRight: '10px' }}> Email id: </label>
+                                    <label>Email: </label>
                                     {/* <input type="email" name="email" value={user.email} onChange={handleChange} placeholder="Enter email address"></input>   */}
-                                    <input type="text" name="email" value={user.email} onChange={handleChange} onInput={(e) => validateEmail(e)} placeholder="Enter email address"></input>
+                                    <div class="inputD">
+                                    <input id="emailI" type="text" name="email" value={user.email} onChange={handleChange} onInput={(e) => validateEmail(e)} placeholder="Enter E-mail"></input>
                                     <span style={{
                                         fontWeight: 'bold',
                                         color: 'red',
                                     }}>{emailError}</span>
-                                </field><br />
+                                    </div>
+                                </field>
                                 <field className="fields">
-                                    <label style={{ paddingRight: '10px' }}> Password: </label>
-                                    <input type="password" name="passwd" value={user.passwd} onChange={handleChange} placeholder="Enter Your password"></input>
-                                </field><br />
-                                <button className="btn btn-outline-primary btn-lg" onClick={logindon}> Login </button><br />
-                                <h7>or</h7><br />
+                                    <label> Password: </label>
+                                    <input id="pass" type="password" name="passwd" value={user.passwd} onChange={handleChange} placeholder="Enter Password"></input>
+                                </field>
+                                <button id="donL" onClick={logindon} style={{width: '100%'}}> Login </button><br />
+                                <div style={{textAlign: 'center'}}><h7>or</h7></div>
                                 <text>Don't have Account?</text>
                                 <a id="reglinkdon" onClick={() => history.push("/registerdon")} title="click here to Sign up"> Sign up here </a>
                             </maindon>
-                        </section>
-                    </section>
+                        </div>
                 </logdon>
             </logpage>
             <br />
-            
         </>
 
     )

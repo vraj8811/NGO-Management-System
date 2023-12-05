@@ -1,42 +1,38 @@
-* {
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-    align-self: center;
+.App
+{
+    background: none;
+    margin-top: 0;
 }
 
-.logindon {
-
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
-    text-justify: center;
-}
-
-.logindon .fields>input {
+input {
     border-radius: 8px;
     border: 2px solid #dddfe2;
     outline: none;
     color: #1d2129;
     margin: 0.5rem 0;
     padding: 0.5rem 0.75rem;
-    /* width: 60%; */
     font-size: 1rem;
 }
 
-.logbutton {
-    background: #1877f2;
-    width: 150px;
-    border: 1px solid #1877f2;
-    color: #fff;
-    font-size: 1.25rem;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
+#donL:hover
+{
+    background-image: linear-gradient(to right,  #2e42a4, #90d7f1);
+    color: navy;
 }
 
+#donL
+{
+    background-image: linear-gradient(to right,  #4262ff, #90d7f1);
+    color: white;
+    margin-left: 0.5%;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 0;
+    margin-top: 3%;
+    margin-bottom: 2%;
+}
 
 #reglinkdon {
     color: #006eff;
@@ -44,36 +40,23 @@
 
 }
 
-.Formlogdon {
-    width: 100%;
-    display: flex;
-    /* border: 1px solid green; */
-    border-radius: 20px;
-    height: 550px;
-    width:70%;
-    text-align: center;
-    text-justify: center;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px 2px rgb(0, 211, 141);
-
-}
-
 .rightdon {
-margin-left: 50px;
-margin-right: 50px;
-padding: 50px;
-/* border: 1px solid green; */
-background-color: rgb(160, 255, 223);
-box-shadow: 0 0 10px 2px rgb(0, 211, 141);
-border-radius: 50px;
+    background-color: rgba(136, 130, 130, 0.5);
+    box-shadow: 0 0 7px 2px #4262ff;
+    border-radius: 50px;
+    display: flex;
+    width: 35%;
+    padding: 2% 3%;
+    margin-top: 12%;
+    margin-left: 47%;
 }
 
-.leftdon {
- 
-    text-transform: capitalize;
-    color: navy;
-    align-items: center;
-    justify-items: center;
-
+.fields
+{
+    display: flex;
+    justify-content: right;
+}
+label
+{
+    margin-right: 2%;
 }

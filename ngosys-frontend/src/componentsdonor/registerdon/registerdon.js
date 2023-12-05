@@ -73,80 +73,67 @@ const Registerdon = () => {
 
      return (
           <>
-               <Navbar />
-
-               <div className="registerdon" style={{ display: 'flex', justifyContent: 'center' }}>
-
-
-                    <div className="regdonbox" style={{ display: 'flex', justifyContent: 'center' }}>
-                         <section className="leftdonreg">
-                              <img src={img1} alt="login picture" width="400px" style={{ marginRight: "100px" }} />
-                         </section>
-                         {/* <div className="d-flex" style={{ height: '600px' }}>
-                        <div className="vr"></div>
-                    </div> */}
-                         <section className="">
-                              <h1>Register as a Donor</h1>
-                              <br></br>
-                              <div className="fields">
-
+               <a onClick={() => history.push("/")} style={{cursor:'pointer'}}>&lt;&lt; <b>Home</b></a>
+                    <div className="regdonbox">
+                         <div className="formDonB">
+                              <h1 id="heading">Register as a Donor</h1>
+                              <div className="fieldsDon">
                                    <label> First name: </label>
-                                   <input type="text" name="firstname" value={user.firstname} placeholder="Enter First name" onChange={handleChange}></input>
-
+                                   <input type="text" name="firstname" value={user.firstname} placeholder="Enter First name" onChange={handleChange} class="inputDonR"></input>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsDon">
                                    <label> Last name: </label>
-                                   <input type="text" name="lastname" value={user.lastname} placeholder="Enter Last name" onChange={handleChange}></input>
+                                   <input type="text" name="lastname" value={user.lastname} placeholder="Enter Last name" onChange={handleChange} class="inputDonR"></input>
                               </div>
-                              <div className="fields" style={{ display: 'flex', justifyContent: 'center' }}>
+                              <div className="fieldsDon">
                                    <label> Address: </label>
                                    <textarea name="address" value={user.address} placeholder="Enter your address" onChange={handleChange}></textarea>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsDon">
                                    <label> City: </label>
-                                   <input type="text" name="city" value={user.city} placeholder="Enter your city" onChange={handleChange}></input>
+                                   <input type="text" name="city" value={user.city} placeholder="Enter your city" onChange={handleChange} class="inputDonR"></input>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsDon">
                                    <label> State: </label>
-                                   <input type="text" name="state" value={user.state} placeholder="Enter your state" onChange={handleChange} ></input>
+                                   <input type="text" name="state" value={user.state} placeholder="Enter your state" onChange={handleChange} class="inputDonR"></input>
                               </div>
-                              <div className="fields gender1" >
-                                   <label className="gender2"> Gender : </label>
-                                   <input type="radio" name="gender" value="male" style={{ paddingLeft: '20px' }} onChange={handleChange}></input>
-                                   <label> Male </label>
+                              <div className="fieldsDon gender1" >
+                                   <label className="gender2"> Gender: </label>
+                                   <input type="radio" name="gender" value="male" onChange={handleChange}></input>
+                                   <label style={{ paddingLeft: '5%' }}> Male </label>
                                    <input type="radio" name="gender" value="female" onChange={handleChange}></input>
-                                   <label> Female </label>
+                                   <label style={{ paddingLeft: '5%' }}> Female </label>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsDon">
                                    <label> Number: </label>
-                                   <input type="text" name="pnumber" value={user.pnumber} placeholder="Enter your phone number" onChange={handleChange}></input>
+                                   <input type="text" name="pnumber" value={user.pnumber} placeholder="Enter your phone number" onChange={handleChange} class="inputDonR"></input>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsDon">
                                    <label> E-mail: </label>
-                                   <input type='email' name="email" value={user.email} placeholder="Enter your E-mail" onChange={handleChange} onInput={(e) => validateEmail(e)} ></input>
+                                   <div class="emailF">
+                                   <input type='email' name="email" value={user.email} placeholder="Enter your E-mail" onChange={handleChange} onInput={(e) => validateEmail(e)} class="inputDonR" style={{width: '100%'}}></input>
                                    <span style={{
                                         fontWeight: 'bold',
                                         color: 'red',
                                    }}>{emailError}</span>
+                                   </div>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsDon">
                                    <label> Password: </label>
-                                   <input type="password" name="passwd" value={user.passwd} placeholder="Enter your password" onChange={handleChange} ></input>
+                                   <input type="password" name="passwd" value={user.passwd} placeholder="Enter your password" onChange={handleChange} class="inputDonR"></input>
                               </div>
-                              <div className="fields">
+                              <div className="fieldsDon">
                                    <label> Confirm Password: </label>
-                                   <input type="password" name="reenterpassword" value={user.reenterpassword} placeholder="Re-Enter your password" onChange={handleChange} ></input>
+                                   <input type="password" name="reenterpassword" value={user.reenterpassword} placeholder="Re-Enter your password" onChange={handleChange} class="inputDonR"></input>
                               </div>
-                              <div className="btn btn-outline-primary btn-lg" onClick={registerdon}> Register </div>
+                              <div className="btn" id="rDon" onClick={registerdon}> Register </div>
                               <div>OR</div>
                               <div>
                                    <text>Already have Account? </text>
                                    <a className="loglinkdon" onClick={() => history.push("/logindon")} title="cliick here to sign in" style={{ cursor: 'pointer' }}> Sign In here </a>
                               </div>
-                         </section>
+                         </div>
                     </div>
-
-               </div>
           </>
      )
 }

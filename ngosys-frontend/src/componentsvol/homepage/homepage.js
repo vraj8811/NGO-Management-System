@@ -3,31 +3,16 @@ import "./homepage.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import img1 from "../../firstpage//images/output-onlinepngtools.png";
-import img2 from "../../firstpage//images/bg.jpg";
-import img3 from "../../firstpage//images/NGO_MANAGE.png";
 import "antd/dist/antd"
 import Searchfeature from "./Components/search";
 import Filter from "./Components/filter";
-import ImageSlider from "./Components/ImageSlider";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from "../../commoncomponent/footer/footer2/footer2";
-import Googlemap from "../../commoncomponent/Googlemap/googlemap";
-
-// import img from "../../uploadimages";
-
-
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
-
-
-
-// const { Meta } = Card;
 
 const Homepage = () => {
 
@@ -176,47 +161,46 @@ const Homepage = () => {
 
         return (
             <>
-                {/* <div className="col -10"> */}
-                {/* <div class="col-3 "> */}
-                <div class="col-3 mx-auto ">
+                <div class="col-4" style={{width: '330px'}}>
                     <Card
                         style={{
-                            width: 320,
-                            height: 320,
+                            height: '100%',
                             backgroundColor: "",
-
-                            boxShadow: '0px 0px 10px 5px rgb(123, 255, 211)'
+                            boxShadow: '0px 0px 6px 1px #4262ff',
+                            padding: '2%'
                         }}
                     >
-                        <CardContent>
+                        <CardContent style={{ paddingBottom: '0%' }}>
                             <Typography
-                                style={{ fontSize: 14, display: 'flex', justifyContent: 'center' }}
+                                style={{ fontSize: 14, display: 'flex', justifyContent: 'center', marginBottom: '3%' }}
                                 color="textSecondary"
                                 gutterBottom
                             >
                                 <img src={event.images} alt={event.images} class="rounded" style={{ height: '100px' }}></img>
 
                             </Typography>
-                            <Typography variant="h6" component="h2">
-                                Name: {event.name}
+                            <Typography variant="h6" component="h2" style={{ marginBottom: '3%', marginTop: '7%', alignContent: 'center', display: 'flex' }}>
+                            {event.name}
                             </Typography>
                             <Typography
-
                                 color="textSecondary"
                             >
                                 Date: {event.edate.substr(0, 10)}
                             </Typography>
-                            <Typography variant="body2" component="p">
-                                organizer Name: {event.organizer}
+                            <Typography variant="body2" component="p" color="textSecondary">
+                                Organizer Name: {event.organizer}
+                            </Typography>
+                            <Typography
+                                color="textSecondary"
+                            >
+                                City: {event.city}
                             </Typography>
                         </CardContent>
-                        <CardActions>
+                        <CardActions style={{ paddingBottom: '3%' }}>
                             <Button size="small" style={{ alignself: 'left' }}><a href={`/Event/${event._id}`}><button className="btn btn-outline-info" >More</button></a></Button>
                         </CardActions>
                     </Card>
-                    <br />
-                    <br />
-
+                    <br/>
                 </div>
               
             </>
@@ -227,61 +211,44 @@ const Homepage = () => {
     )
 
     return (
-        <div className="homepage">
-
+        <div className="homepagevol">
             <div class="mainheadervol">
-                <div class="logo">
-                <a href="/"><img src={img1} alt="logo"></img></a>
-                </div>
-
                 <nav>
-                    <a href="/homepage">Home</a>
-                    {/* <a href="/contactus">Contact</a> */}
-                    <a onClick={() => history.push("/updatevol")} style={{ cursor: "pointer" }}>Update Profile </a>
-                    <a style={{ cursor: 'pointer' }} onClick={() => history.push("/registeredevents")} >Registered Events</a>
-                    <button className="btn btn-outline-danger " onClick={logout}>Logout</button>
-
+                    <a href="/homepage" className="navLink">Home</a>
+                    <a style={{ cursor: 'pointer' }} onClick={() => history.push("/registeredevents")} className="navLink">Registered Events</a>
+                    <a onClick={() => history.push("/updatevol")} style={{ cursor: "pointer" }} className="navLink">Update Profile </a>
+                    <button className="navLink" onClick={logout} style={{background: 'none', border: '0'}}>Logout</button>
                 </nav>
             </div>
+            <div className="bodyContainer">
+                <div>
+                    <h1 style={{ display: 'flex', justifyContent: 'center', fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sansSerif", fontWeight: 600}}>List of Events</h1>
+                    <Searchfeature
+                        refreshFunction={updateSearch}
+                    />
+                </div>
+                <Filter
+                    handleFilters={filters => handleFilters(filters, "category")}
+                />
+                <div>
+                    {Events.length === 0 ?
+                        <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
+                            <h2>No post yet....</h2>
+                        </div> :
+                        <div className="row" style={{justifyContent: 'center'}}>
+                            {rendercards}
+                        </div>
+                    }
 
-            <br></br><br></br>
-            <h1 style={{ display: 'flex', justifyContent: 'center' }}>Hello {user.user.firstname} {user.user.lastname} !!!</h1>
-            <br></br><br></br>
-
-            <h1 style={{ display: 'flex', justifyContent: 'center', textDecoration: 'underline' }}>List of Events:</h1>
-            <br></br>
-
-            <Filter
-                handleFilters={filters => handleFilters(filters, "category")}
-            />
-
-            <br />
-            <Searchfeature
-                refreshFunction={updateSearch}
-            />
-
-            <div style={{ width: '90%', margin: '3rem auto' }}>
-
-                {Events.length === 0 ?
-                    <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
-                        <h2>No post yet....</h2>
-                    </div> :
-                    <div className="row">
-
-                        {rendercards}
-
-
+                </div>
+            
+                {Postsize >= Limit &&
+                    <div>
+                        <button className="btn" style={{width: '100%'}} onClick={onloadmore}>Load More</button>
                     </div>
                 }
-
+                <br />
             </div>
-           
-            {Postsize >= Limit &&
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <button className="btn btn-outline-dark btn-lg" onClick={onloadmore}>Load more</button>
-                </div>
-            }
-            <br />
         </div>
 
     )

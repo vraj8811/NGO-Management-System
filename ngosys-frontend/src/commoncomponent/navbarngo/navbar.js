@@ -17,21 +17,15 @@ const Navbar = () => {
     return (
 
 
-        <section className="mainheaderVOL">
-            <div className="logo">
-                <img src={img1} alt="logo"></img>
-            </div>
-
+        <div className="mainheaderngo">
             <nav>
-                <a onClick={() => history.push("/homepagengo")} style={{ cursor: 'pointer' }}>Home</a>
-                {/* <a href="/contactus">Contact</a> */}
-                <a onClick={() => history.push("/transection")} style={{ cursor: "pointer" }}>Transection</a>
-                <a onClick={() => history.push("/updatengo")} style={{ cursor: "pointer" }}>Update Profile</a>
-                <a onClick={() => history.push("/addevents")} style={{ cursor: "pointer" }}>Add Event</a>
-                <button className="btn btn-outline-danger" onClick={logout}>Logout</button>
-
+                <a onClick={() => history.push("/homepagengo")} className="navLink">Home</a>
+                <a onClick={() => history.push("/addevents")} className="navLink">Add Event</a>
+                <a onClick={() => history.push("/transection")} className="navLink">Fund Donation</a>
+                <a onClick={() => history.push("/updatengo")} className="navLink">Update Profile</a>
+                <button className="navLink" onClick={logout} style={{background: 'none', border: '0'}}>Logout</button>
             </nav>
-        </section>
+        </div>
 
     )
 }

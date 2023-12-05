@@ -1,6 +1,79 @@
-*{
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    align-content: center;
+* {
+    margin: 0;
+    padding: 0;
+
+}
+.mainDivED
+{
+    background: whitesmoke;
+    position: relative;
+    top: 0;
+    height: 1000vh;
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.container
+{
+    background-color: white;
+    color: black;
+    border-radius: 1%;
+}
+
+.edetails
+{
+    display: flex;
+    flex-direction: column;
+}
+.innerF
+{
+    margin: 0% 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+.mainDivED .edetails .innerF>label
+{
+    margin-bottom: 1%;
+}
+
+label
+{
+    width: 31%;
+}
+
+.suggesBox
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.suggesRow
+{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    margin-top: 0%;
+}
+
+.suggesCard
+{
+    width: 20%;
+    margin-top: 0%;
+    height: 100%;
+}
+
+.tFlex
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.table
+{
+    background-color: white;
+    margin-top: 1%;
+    margin-bottom: 3%;
 }

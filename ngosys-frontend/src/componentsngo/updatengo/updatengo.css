@@ -1,43 +1,26 @@
-* {
-    margin: 0;
-    padding: 0;
-
-}
-
-#addEventDiv {
+.mainDivUP
+{
     background: whitesmoke;
-    position: relative;
-    top: 0;
-    height: 150vh;
     position: absolute;
+    top: 0;
+    height: 100%;
     left: 0;
     width: 100%;
 }
 
-.addevents_box {
-    width: 50%;
-    background: #fff;
+.UP_box
+{
+    width: 40%;
+    background: white;
     box-shadow: 0 0 8px 3px #4262ff;
     border-radius: 8px;
     align-items: center;
     text-align: center;
-    margin: 4% 27%;
+    margin: 4% 30%;
     padding: 2%;
 }
 
-.fieldsAddEvent
-{
-    display: flex;
-    justify-content: left;
-}
-
-.labelAE
-{
-    color: black;
-    width: 30%;
-}
-
-.inputAE
+.inputUP
 {
     border-radius: 8px;
     border: 2px solid #dddfe2;
@@ -49,7 +32,18 @@
     width: 70%;
 }
 
-.headerAE
+.labelUP
+{
+    color: black;
+    width: 30%;
+}
+
+.fieldsUP
+{
+    display: flex;
+}
+
+.headerUP
 {
     font-weight: bold;
     margin-top: 0%;

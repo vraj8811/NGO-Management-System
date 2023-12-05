@@ -4,8 +4,10 @@ import axios from 'axios';
 import Navbar from '../../commoncomponent/navbarngo/navbar';
 import { useParams } from 'react-router-dom';
 import "./eventdetailsngo.css"
-import Footer from '../../commoncomponent/footer/footer2/footer2';
-import Googlemap from '../../commoncomponent/Googlemap/googlemap';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 const Detaileventngo = () => {
     const history = useHistory();
@@ -69,116 +71,95 @@ const Detaileventngo = () => {
             return (
                 <>
                     <br />
-                    <button className="btn btn-outline-warning" onClick={updateEvent} >Update Event</button>
+                    <button className="btn mb-4" onClick={updateEvent} >Update Event</button>
                 </>
             )
         }
     }
 
+    function formatDate(date){
+        const createdDate = new Date(date);
+        let d = createdDate.getDate();
+        let m = createdDate.getMonth()+1;
+        let y = createdDate.getFullYear();
+        return d+'/'+m+'/'+y;
+    }
+
     return (
         <>
+            <div className="mainDivED">
             <Navbar />
-            <div >
-
-                <br />
-                <h1 style={{ display: 'flex', justifycontent: 'center' }}>{Event.name}</h1>
-                <br />
-                <div style={{ display: 'flex', justifycontent: 'center', color: 'brown' }}>
-                    <div style={{ marginRight: '100px' }}>
-                        <img src={Event.images} alt={Event.images} style={{ height: '200px', borderRadius: '10px' }}></img><br />
+                <div className="container edetails my-5" style={{boxShadow: "0px 0px 6px 2px #4262ff"}}>
+                <h1 style={{marginBottom: '1%', fontWeight: 'bold'}}>{Event.name}</h1>
+                    <div style={{marginBottom: '2%'}}>
+                        <img src={Event.images} alt={Event.images} style={{ height: '250px', borderRadius: '200px', width: '250px' }}></img><br />
                     </div>
-                    <div >
-                        <label style={{ paddingBottom: '10px' }}>Event Name : {Event.name} </label><br />
-                        <label style={{ paddingBottom: '10px' }}>Event organizer : {Event.organizer} </label><br />
-                        <label style={{ paddingBottom: '10px' }}>Event category : {Event.category} </label><br />
-                        <label style={{ paddingBottom: '10px' }}>Date : {Event.edate}</label><br />
-                        <label style={{ paddingBottom: '10px' }}>Time : {Event.etime} </label><br />
-                        <label style={{ paddingBottom: '10px' }}>Address : {Event.address} ,{Event.city}, {Event.state} </label><br />
-                        <label style={{ paddingBottom: '10px' }}>NGO's Email ID : {Event.email} </label><br />
-                        <label style={{ paddingBottom: '10px' }}>NGO's Contact No. : {Event.contact} </label><br />
-                        <label style={{ width: "400px", paddingBottom: '10px' }}>Description : {Event.description} </label><br />
-
-                        {updatebutton()}
-                        <br />
+                    <div className="innerF">
+                        <label><b>Event organizer:</b> {Event.organizer} </label>
+                        <label><b>Event category:</b> {Event.category} </label>
+                        <label><b>Date & Time:</b> {formatDate(Event.edate)} {Event.etime} </label>
+                        <label><b>Address:</b> {Event.address} ,{Event.city}, {Event.state} </label>
+                        <label><b>NGO's Contact Info.:</b> {Event.email}<br/>{Event.contact}</label>
+                        <label><b>Description:</b> {Event.description} </label>
                     </div>
-                    <div style={{ marginLeft: '20px' }}>
-                        <Googlemap />
-                    </div>
+                    {updatebutton()}
                 </div>
 
-                <h3>Suggestions:</h3>
-                <table className="table ">
-                    <tr className="tableheader">
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Suggestion</th>
-
-
-                    </tr>
-                    {
+                <div className="container my-3 suggesBox">
+                <h3 style={{fontWeight: "bold", marginTop:"2%"}}>Suggestions</h3>
+                <div className="row suggesRow" style={{marginTop: '0.5%'}}>
+                {
                         Suggest.map(suggest =>
-                            <tbody className="tablebody">
-                                <tr >
-                                    <td>{suggest.firstname}</td>
-                                    <td>{suggest.lastname}</td>
-                                    <td style={{ maxWidth: '300px' }}>{suggest.suggestion}</td>
-                                </tr>
-                            </tbody>
+                            <div className="col-4 suggesCard">
+                                <Card
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        backgroundColor: "",
+                                        boxShadow: '0px 0px 6px 1px #4262ff'
+                                    }}
+                                >
+                                    <CardContent style={{ paddingBottom: '0%', textAlign: 'center'}}>
+                                        <Typography
+                                            color="textSecondary"
+                                        >
+                                            {suggest.suggestion}
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions style={{ paddingBottom: '3%'}}>
+                                        <h6>- {suggest.firstname} {suggest.lastname}</h6>
+                                    </CardActions>
+                                </Card>
+                                <br/>
+                            </div>
                         )}
-                </table>
-                <br></br>
+                </div>
+                </div>
 
-
-                {/* <h3>Feedbacks:</h3>
-                <table className="table ">
-                    <tr className="tableheader">
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Ratings</th>
-                        <th scope="col">Feedback</th>
-                        <th scope="col">Remove</th>
-
-                    </tr>
-                    {
-                        Feed.map(feed =>
-                            <tbody className="tablebody">
-                                <tr >
-                                    <td>{feed.firstname}</td>
-                                    <td>{feed.lastname}</td>
-                                    <td>{feed.rate}</td>
-                                    <td style={{ maxWidth: '500px' }}>{feed.message}</td>
-                                    <td><button className="btn btn-outline-danger" onClick={() => removeEvent(feed)} >Remove</button></td>
-                                </tr>
-                            </tbody>
-                        )}
-                </table> */}
-                <br></br>
-
-                <h3>List of Registered Participants:</h3>
-                <table className="table ">
-                    <tr className="tableheader">
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Email-Id</th>
-                        <th scope="col">Phone Number</th>
-
-                        {/* <th scope="col">For more details</th> */}
-
-
-                    </tr>
-                    {
-                        Participants.map(parti =>
-                            <tbody className="tablebody">
-                                <tr >
-                                    <td>{parti.firstname}</td>
-                                    <td>{parti.lastname}</td>
-                                    <td>{parti.email}</td>
-                                    <td style={{ maxWidth: '500px' }}>{parti.pnumber}</td>
-                                </tr>
-                            </tbody>
-                        )}
-                </table>
-                <br />
+                <div className="container my-5 px-5 tFlex">
+                    <h3 style={{fontWeight: "bold", marginTop:"2%"}}>Registered Volunteers</h3>
+                    <table className="table" style={{textAlign: 'center'}}>
+                        <tr className="thead table-dark" style={{backgroundColor: 'black'}}>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact No.</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        {
+                            Participants.map(parti =>
+                                <tbody className="tbody">
+                                    <tr >
+                                        <td>{parti.firstname} {parti.lastname}</td>
+                                        <td>{parti.email}</td>
+                                        <td>{parti.pnumber}</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            )}
+                    </table>
+                </div>
             </div>
         </>
     );

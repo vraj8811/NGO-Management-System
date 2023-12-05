@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./loginngo.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom";
+import Navbar from "../../commoncomponent/navbar";
 // {setLoginNGO}
 const Loginngo = () => {
     const history = useHistory();
@@ -64,33 +65,34 @@ const Loginngo = () => {
 
     return (
         <>
-            <logpage className="loginngo">
-                <br></br>
-                <br></br>
-                <logngo style={{ display: 'flex', justifyContent: 'center' }}>
-                        <section className="rightngo">
+
+            <logpage>
+                <logngo>
+                    <a onClick={() => history.push("/")} style={{cursor:'pointer'}}>&lt;&lt; <b>Back</b></a>
+                        <div className="rightngo">
                             <mainngo>
-                                <h1>Login As NGO</h1><br />
-                                <field className="fields">
-                                    <label style={{ paddingRight: '10px' }}> Email:</label>
-                                    {/* <input type="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter email address"></input> */}
-                                    <input type="text" name="email" value={user.email} onChange={handleChange} onInput={(e) => validateEmail(e)} placeholder="Enter email address"></input>
+                                <h1 id="heading">Login As NGO</h1>
+                                <div className="fields">
+                                    <label>Email:</label>
+                                    <div class="inputD">
+                                    <input type="text" name="email" value={user.email} onChange={handleChange} onInput={(e) => validateEmail(e)} placeholder="Enter E-mail"></input>
                                     <span style={{
                                         fontWeight: 'bold',
                                         color: 'red',
+                                        marginLeft: '5%',
                                     }}>{emailError}</span>
-                                </field><br />
-                                <field className="fields">
-                                    <label style={{ paddingRight: '10px' }}> Password: </label>
-                                    <input type="password" name="passwd" value={user.passwd} onChange={handleChange} placeholder="Enter Your password"></input>
-                                </field><br />
-                                <button className="btn btn-outline-primary btn-lg" onClick={loginNgo} id="ngoL" style={{width: '100%'}}> Login </button><br />
-                                <h7>or</h7><br />
-                                <text>Don't have Account?</text>
-                                <a id="reglinkngo" onClick={() => history.push("/registerngo")} title="click here to Sign up"> Sign up here </a>
+                                    </div>
+                                </div>
+                                <div className="fields">
+                                    <label>Password:</label>
+                                    <input type="password" name="passwd" value={user.passwd} onChange={handleChange} placeholder="Enter Password"></input>
+                                </div>
+                                <button onClick={loginNgo} id="ngoL" style={{width: '100%'}}> Login </button>
+                                <div><h7>Or</h7></div>
+                                <text>Don't have an Account?</text>
+                                <a id="reglinkngo" onClick={() => history.push("/registerngo")} title="Click here to Sign up"> Sign up here </a>
                             </mainngo>
-                        </section>
-                        
+                        </div>          
                 </logngo>
                 <br />
             </logpage>

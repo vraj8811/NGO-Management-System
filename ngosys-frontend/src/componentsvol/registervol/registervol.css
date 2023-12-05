@@ -1,96 +1,91 @@
-* {
-    align-items: center;
-
-}
-
-.registervol {
-    width: 100%;
-    height: 100%;
-    align-items: center;
+.regvolbox
+{
+    background-color: rgba(136, 130, 130, 0.5);
+    width: 45%;
+    display: flex;
+    border-radius: 20px;
+    height:100%;
     text-align: center;
-    overflow-y: scroll;
-
+    box-shadow: 0 0 10px 2px #4262ff;
+    padding: 1%;
+    margin: 1% 41%;
+    justify-content: justify;
 }
 
-.regvolbox {
-
-    width: 70%;
-    background: #fff;
-    border: 1px solid #dddfe2;
-    box-shadow: 0 0 10px 2px rgb(0, 211, 141);
-    border-radius: 8px;
-    padding: 1rem;
+.fieldsVol
+{
+    display: flex;
     justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
 }
 
-.registervol .fields>input {
-    /* border-radius: 8px; */
-    border: none;
-    border-bottom: 2px solid #dddfe2;
-    outline: none;
-    color: #1d2129;
-    margin: 0.5rem 0;
-    padding: 0.5rem 0.75rem;
-    /* width: 92%; */
-    font-size: 1rem;
-
-    /* margin-left: -90px; */
+label
+{
+    width: 30%;
+    justify-content: left;
 }
 
-.registervol .fields>textarea {
-    /* border-radius: 8px; */
-    border: none;
-    border-bottom: 2px solid #dddfe2;
-    outline: none;
-    color: #1d2129;
-    margin: 0.5rem 0;
-    padding: 0.5rem 0.75rem;
-    /* width: 92%; */
-    font-size: 1rem;
-
-    /* margin-left: -90px; */
+.headerVolR
+{
+    margin: 0%;
+    color: white;
+    font-weight: bold;
 }
 
-
-.registervol .gender1 .gender2 {
-    margin-left: -90px;
-}
-
-
-.registervol .button {
-
-    background: #1877f2;
-    width: 150px;
-    border: 1px solid #1877f2;
-    font-size: 1.25rem;
-    padding: 0.5rem;
-    margin-left: 100px;
+.inputVolR
+{
     border-radius: 8px;
+    border: 2px solid #dddfe2;
     outline: none;
-    cursor: pointer;
+    color: #1d2129;
+    padding: 0.30rem 0.75rem;
+    font-size: 1rem; 
+    margin-bottom: 1%;
+    width: 70%;
 }
 
-#loglinkvol {
-    color: #006eff;
+textarea
+{
+    border-radius: 8px;
+    border: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    padding: 0.25rem 0.75rem;
+    font-size: 1rem; 
+    margin-bottom: 1%;
+    width: 70%;
 }
 
-.rightvolreg {
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 50px;
-    /* border: 1px solid green; */
-    background-color: rgb(160, 255, 223);
-    box-shadow: 0 0 10px 2px rgb(0, 211, 141);
-    border-radius: 50px;
+.formVolB
+{
+    margin: 0% 10%;
 }
 
-.leftvolreg {
-
-    text-transform: capitalize;
+#rVol:hover
+{
+    background-image: linear-gradient(to right,  #2e42a4, #90d7f1);
     color: navy;
-    align-items: center;
-    justify-items: center;
+}
 
+#rVol
+{
+    background-image: linear-gradient(to right,  #4262ff, #90d7f1);
+    color: white;
+    margin-left: 0.5%;
+    margin-bottom: 1%;
+    margin-top: 4%;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 0;
+    width: 60%
+}
+
+.emailF
+{
+    margin-left: 4%;
+    display: flex;
+    flex-direction: column;
+    width: 82%;
+    justify-content: flex-start;
 }

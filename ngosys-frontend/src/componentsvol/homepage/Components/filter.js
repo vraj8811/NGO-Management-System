@@ -47,24 +47,18 @@ const Filter = (props) => {
 
     return (
         <div style={{display:'flex'}}>
-            <label>Filter By Categories: </label>&nbsp;&nbsp;
-            {/* <Collapse defaultActiveKey={['0']} > */}
-            {/* <Panel header="category" key="1"> */}
+            <label style={{fontWeight: 'bold'}}>Categories To Filter: </label>
             {category.map((value, index) => (
                 <React.Fragment key={index}>
                     <Checkbox
                         onChange={() => handleToggle(value._id)}
                         type="checkbox"
                         checked={Checked.indexOf(value._id) === -1 ? false : true}
-                    />&nbsp;&nbsp;
-                    <span>{value._id}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        style={{marginRight: '1%'}}
+                    />
+                    <span style={{marginRight: '7%'}}>{value._id}</span>
                 </React.Fragment>
             ))}
-
-
-            {/* </Panel> */}
-            {/* </Collapse> */}
-            
         </div>
     );
 };

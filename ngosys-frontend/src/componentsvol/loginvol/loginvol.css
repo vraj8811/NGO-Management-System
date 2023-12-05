@@ -1,40 +1,69 @@
-* {
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-    align-self: center;
-}
-
-.loginvol {
-
-    width: 100vw;
-    height: 100vh;
+.rightvol
+{
+    background-color: rgba(136, 130, 130, 0.5);
+    width: 33%;
+    display: flex;
+    border-radius: 20px;
+    height:100%;
     text-align: center;
-    text-justify: center;
+    box-shadow: 0 0 10px 2px #4262ff;
+    padding: 2% 3%;
+    margin-left: 49%;
+    margin-top: 11%;
 }
 
-.loginvol .fields>input {
+#reglinkngo {
+    color: #006eff;
+    cursor: pointer;
+}
+
+.fields
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+mainvol
+{
+    margin: 0;
+}
+
+input
+{
     border-radius: 8px;
     border: 2px solid #dddfe2;
     outline: none;
     color: #1d2129;
     margin: 0.5rem 0;
     padding: 0.5rem 0.75rem;
-    /* width: 60%; */
     font-size: 1rem;
 }
 
-.logbutton {
-    background: #1877f2;
-    width: 150px;
-    border: 1px solid #1877f2;
-    color: #fff;
-    font-size: 1.25rem;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
+.inputD
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#volL:hover
+{
+    background-image: linear-gradient(to right,  #2e42a4, #90d7f1);
+    color: navy;
+}
+
+#volL
+{
+    background-image: linear-gradient(to right,  #4262ff, #90d7f1);
+    color: white;
+    margin-left: 0.5%;
+    margin-bottom: 1.5%;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 0;
+    margin-top: 3%;
 }
 
 
@@ -44,36 +73,7 @@
 
 }
 
-.Formlogvol {
-    width: 100%;
-    display: flex;
-    /* border: 1px solid green; */
-    border-radius: 20px;
-    height: 550px;
-    width:70%;
-    text-align: center;
-    text-justify: center;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px 2px rgb(0, 211, 141);
-
-}
-
-.rightvol {
-margin-left: 50px;
-margin-right: 50px;
-padding: 50px;
-/* border: 1px solid green; */
-background-color: rgb(160, 255, 223);
-box-shadow: 0 0 10px 2px rgb(0, 211, 141);
-border-radius: 50px;
-}
-
-.leftvol {
- 
-    text-transform: capitalize;
-    color: navy;
-    align-items: center;
-    justify-items: center;
-
+label
+{
+    text-align: left;
 }

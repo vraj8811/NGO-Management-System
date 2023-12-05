@@ -1,88 +1,68 @@
-.loginngo {
-    align-items: center;
-    text-align: center;
-}
-
-.App
+.rightngo
 {
-    background: none;
-    margin-top: 0;
+    background-color: rgba(136, 130, 130, 0.5);
+    width: 35%;
+    display: flex;
+    border-radius: 20px;
+    height:100%;
+    text-align: center;
+    box-shadow: 0 0 10px 2px #4262ff;
+    padding: 3%;
+    margin-left: 47%;
+    margin-top: 13%;
 }
 
-.loginngo .fields > input {
+#ngoL:hover
+{
+    background-image: linear-gradient(to right,  #2e42a4, #90d7f1);
+    color: navy;
+}
+
+#ngoL
+{
+    background-image: linear-gradient(to right,  #4262ff, #90d7f1);
+    color: white;
+    margin-left: 0.5%;
+    margin-bottom: 2%;
+    margin-top: 4%;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 0;
+    width: 60%
+}
+#reglinkngo {
+    color: #006eff;
+    cursor: pointer;
+}
+
+.fields
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+input
+{
     border-radius: 8px;
     border: 2px solid #dddfe2;
     outline: none;
     color: #1d2129;
     margin: 0.5rem 0;
     padding: 0.5rem 0.75rem;
-    /* width: 60%; */
     font-size: 1rem;
 }
 
-.logngobut {
-    background-image: linear-gradient(to right,  #4262ff, #90d7f1);
-    color: white;
-    margin-left: 0.5%;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 10px;
-    border: 0;
-}
-
-.logngobut:hover
+.inputD
 {
-    background-image: linear-gradient(to right,  #2e42a4, #90d7f1);
-}
-
-#ngpL
-{
-    margin-top: 5%;
-    margin-bottom: 2.5%;
-}
-
-#reglinkngo{
-    color: #4262ff;
-    cursor: pointer;
-    
-}
-
-.Formlogngo {
-    width: 100%;
     display: flex;
-    /* border: 1px solid green; */
-    border-radius: 20px;
-    height: 550px;
-    width:70%;
-    text-align: center;
-    text-justify: center;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px 2px #4262ff;
-
+    flex-direction: column;
 }
 
-.rightngo {
-margin-left: 28%;
-margin-top: 10%;
-padding: 50px;
-/* border: 1px solid green; */
-background-color: rgba(136, 130, 130, 0.8);
-box-shadow: 0 0 7px 2px #4262ff;
-border-radius: 50px;
+#heading
+{
+    color: white;
+    font-weight: bold;
 }
-
-.leftngo {
- 
-    text-transform: capitalize;
-    color: navy;
-    align-items: center;
-    justify-items: center;
-
-}
-label {
-        width: 30%;
-        text-align: right;
-  }
-  

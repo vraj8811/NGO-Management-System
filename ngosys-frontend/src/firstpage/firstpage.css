@@ -1,19 +1,6 @@
-*
+body
 {
-    margin: 0;
-    padding: 0;
-}
-
-body{
-    background-image: linear-gradient(to bottom right, rgba(110, 106, 106, 0.7), rgba(6, 7, 7, 0.9)), url('images/bg8.jpg');
-    /* background-size: 100% 100%; */
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 80%;
-    height: 800px;
-    background-size: cover;
     color: white;
-    padding: 20px;
 }
 
 .App
@@ -27,13 +14,14 @@ body{
     border-radius: 2%;
     margin-top: 18%;
     margin-left: 27%;
+    box-shadow: 0 0 10px 2px #4262ff;
 }
 
  .left{
     margin: 3%;
     text-align: center;
     text-transform: capitalize;
-    color: navy;
+    color: white;
 }
 
 .left H1{
@@ -41,6 +29,7 @@ body{
     font-weight: 700;
     margin: 1% 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
 }
 
 .left H2{
