@@ -23,6 +23,9 @@ import Donatemoney from './componentsdonor/donatemoney/donatemoney';
 import Donatethings from './componentsdonor/donatethings/donatethings';
 import Transection from './componentsngo/transection/transection';
 import Viewtrans from './componentsdonor/viewtrans/viewtrans';
+import DonationSuccess from './componentsdonor/donatethings/donationSuccess';
+import ThingRegister from './componentsdonor/thingsRegister/thingregister';
+import Donation from './componentsngo/donation/donation'
 
 import {
   BrowserRouter as Router,
@@ -70,6 +73,14 @@ function App() {
           <Route path="/logindon">
             <Logindon setLoginVolunteer={setLoginDonor} />
           </Route>
+
+          <Route path="/thingregister">
+            <ThingRegister/>
+          </Route>
+
+          <Route path="/donationSuccess">
+            <DonationSuccess/>
+          </Route>
           
           <Route path="/registerdon">
 
@@ -79,6 +90,11 @@ function App() {
           <Route path="/viewtrans">
 
             <Viewtrans />
+          </Route>
+
+          <Route path="/donation">
+
+            <Donation />
           </Route>
 
           <Route path="/transection">

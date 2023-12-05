@@ -110,10 +110,23 @@ const Updatedon = () => {
         }
     }
 
+    const logout = () => {
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem("currentRegUser");
+        history.push("/")
+    }
+
     return (
         <>
             <div id="backuser">
-                <Navbar />
+            <nav>
+                    <a href="/homepagedonor">Home</a>
+                    {/* <a href="/contactus">Contact</a> */}
+                    <a onClick={() => history.push("/updatedon")} style={{ cursor: "pointer" }}>Update Profile </a>
+                    <a onClick={() => history.push("/viewtrans")} style={{ cursor: "pointer" }}>View Transections </a>
+                    <a onClick={() => history.push("/donationSuccess")} style={{ cursor: "pointer" }}>Donations </a>
+                    <button className="btn btn-outline-danger" onClick={logout}>Logout</button>
+                </nav>
                 <div className="addevents" style={{ display: 'flex', justifyContent: 'center' }}>
 
                     <br></br>

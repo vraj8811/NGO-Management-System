@@ -9,9 +9,11 @@ import shortid from "shortid";
 
 import Volunteer from "./models/Volunteer.js";
 import NGO from "./models/NGO.js";
+import Things from "./models/Things.js";
 import Events from "./models/Events.js";
 import Donor from "./models/Donor.js";
 import Transection from "./models/Transection.js";
+
 
 const app = express()
 app.use(express.json({ limit: "50mb", extended: true }));
@@ -75,6 +77,23 @@ app.post('/savetransaction', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+app.post("/savedonation", async (req, res) => {
+    try {
+      // Create a new transaction object based on the request body
+      const newDoanation = new Doantion(req.body);
+  
+      // Save the transaction to the database
+      await newDoanation.save();
+  
+      // Send a success response
+      res.status(200).json({ message: "Doanation saved successfully" });
+    } catch (error) {
+      // Handle errors and send an error response
+      console.error("Error saving Doanation:", error.message);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
 
 app.post("/loginvol", async (req, res) => {
     console.log("logged in as a volunteer")
@@ -240,6 +259,35 @@ app.post("/registerngo", (req, res) => {
     })
 })
 
+app.post('/registersThing', async (req, res) => {
+    try {
+      const {
+        ngoID,
+        donorID,
+        quantity,
+        thingName,
+        Images
+      } = JSON.parse(req.body.Data); // Assuming the request body contains these fields
+  
+  
+      // Create a new instance of Things model
+      const newThing = new Things({
+        ngoID,
+        donorID,
+        quantity,
+        thingName,
+        images:Images
+      });
+  
+      // Save the new thing to the database
+      const savedThing = await newThing.save();
+  
+      res.status(201).json(savedThing); // Respond with the saved thing
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
 app.post("/updatengo", (req, res) => {
     console.log("visited")
 
@@ -267,7 +315,6 @@ app.post("/updatengo", (req, res) => {
 })
 
 app.post("/updatevol", (req, res) => {
-    console.log("visited")
 
     var oldvolstatus = Volunteer.findById(req.body.ID)
     Volunteer.findOneAndUpdate({ _id: req.body.ID },
@@ -731,6 +778,20 @@ app.get('/getallngo',async (req, res) => {
   
   });
 
+  app.get("/getallthings/:donID", async (req, res) => {
+
+    const ID = req.params.donID;
+    try {
+      const things = await Things.find({ donorID: ID }).populate("donorID").populate("ngoID");
+      res.json(things);
+      console.log(things);
+      //res.json(req.user);
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+
 // Endpoint to retrieve all transactions for a specific NGO
 app.get('/transactions/:ngoID', async (req, res) => {
     const ID = req.params.ngoID;
@@ -748,6 +809,25 @@ app.get('/transactions/:ngoID', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+app.get("/doantions/:ngoID", async (req, res) => {
+    const ID = req.params.ngoID;
+  
+    try {
+      // Find all transactions for the specified NGO ID
+      const doantion = await Things.find({ ngoID: ID })
+        .populate("donorID")
+        .populate("ngoID");
+      console.log(doantion);
+  
+      // Send the transactions as a response
+      res.json(doantion);
+    } catch (error) {
+      // Handle errors and send an error response
+      console.error("Error retrieving transactions:", error.message);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
 
 app.post('/transactions', async (req, res) => {
     const { ngoID, donorID, amount, date, razorpayPaymentId, razorpayOrderId, razorpaySignature } = req.body;
@@ -773,6 +853,42 @@ app.post('/transactions', async (req, res) => {
       // Handle errors and send an error response
       console.error('Error inserting transaction:', error.message);
       res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  app.put('/updatestatus/:id/updateStatus', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { newStatus } = req.body; // Assuming you pass the new status in the request body
+  
+        // Find the thing by ID and update the status
+        const updatedThing = await Things.findByIdAndUpdate(id, { status: newStatus }, { new: true });
+  
+        if (!updatedThing) {
+            return res.status(404).json({ message: 'Thing not found' });
+        }
+  
+        return res.status(200).json(updatedThing);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.put('/things/:id/updatePick', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { newPick } = req.body; // Assuming you pass the new pick value in the request body
+  
+        // Find the thing by ID and update the 'pick' field
+        const updatedThing = await Things.findByIdAndUpdate(id, { pick: newPick }, { new: true });
+  
+        if (!updatedThing) {
+            return res.status(404).json({ message: 'Thing not found' });
+        }
+  
+        return res.status(200).json(updatedThing);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
     }
   });
 
