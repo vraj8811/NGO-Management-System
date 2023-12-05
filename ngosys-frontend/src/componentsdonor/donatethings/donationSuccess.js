@@ -94,6 +94,9 @@ const DonationSuccess = () => {
             <thead>
               <tr>
                 <th>Index</th>
+                <th>NGO Name</th>
+                <th>NGO Email</th>
+                <th>NGO Phone no.</th>
                 <th>Image</th>
                 <th>Things Name</th>
                 <th>Quantity</th>
@@ -105,6 +108,9 @@ const DonationSuccess = () => {
             {thingsdata.map((trans, index) => (
                 <tr key={trans._id}>
                   <td>{index + 1}</td>
+                  <td>{trans.ngoID.name}</td>
+                  <td>{trans.ngoID.email}</td>
+                  <td>{trans.ngoID.pnumber}</td>
                   <td>
                     {
                       <img

@@ -79,7 +79,9 @@ const Homepagengo = () => {
             <div style={{ width: '90%', margin: '3rem auto' }}>
                 <h1 style={{ display: 'flex', justifyContent: 'center', fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sansSerif", fontWeight: 600 }}>Upcoming Events</h1>
                 <div className="row" >
-                    {
+                {Event.length === 0 ? (
+                    <h3 align="center" style={{color:"black"}}>No post yet...</h3>
+                ) : (
                         Event.map(event =>
                             <div class="col-3">
                                 <Card
@@ -122,11 +124,13 @@ const Homepagengo = () => {
                                 </Card>
                                 <br/>
                             </div>
-                        )}
+                        ))}
                 </div>
                 <h1 style={{ display: 'flex', justifyContent: 'center', fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sansSerif", fontWeight: 600}}>Previous Events</h1>
                 <div className="row" style={{marginTop: '0%'}}>
-                    {
+                {LessEvent.length === 0 ? (
+                    <h3 align="center" style={{color:"black"}}>No post yet...</h3>
+                ) : (
                         LessEvent.map(event =>
 
                             <div class="col-3">
@@ -170,7 +174,7 @@ const Homepagengo = () => {
                                 </Card>
                                 <br/>
                             </div>
-                        )}
+                        ))}
                 </div>
             </div>
         </div>

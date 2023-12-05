@@ -107,9 +107,9 @@ const Doantion = () => {
               <tr>
                 <th>Index</th>
                 <th>Donor Name</th>
-                <th>Address</th>
-                <th>Phone Number</th>
-                <th>Email</th>
+                <th>Donor Address</th>
+                <th>Donor Phone Num.</th>
+                <th>Donor Email</th>
                 <th>Things Name</th>
                 <th>Quantity</th>
                 <th>Image</th>

@@ -41,6 +41,7 @@ const Transection = () => {
             <Navbar/>
             <div className="container">
                 <h1 style={{fontWeight: 'bold', marginBottom: '1.5%'}}>Funds Donated</h1>
+                <h1 style={{fontWeight: 'bold', marginBottom: '1.5%'}}>Funds: {user.user.fund}</h1>
                 {transList.length === 0 ? (
                     <p>No transaction history available.</p>
                 ) : (
