@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react"
-import "../../componentsngo/addevent/addevents.css"
+import "../../componentsngo/updatengo/updatengo.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom";
 import Navbar from "../../commoncomponent/navbarvol/navbar";
-import Footer from "../../commoncomponent/footer/footer2/footer2";
 
 const Updatevol = () => {
     const history = useHistory();
@@ -111,62 +110,48 @@ const Updatevol = () => {
 
     return (
         <>
-            <div id="backuser">
+            <div className="mainDivUP">
                 <Navbar />
-                <div className="addevents" style={{ display: 'flex', justifyContent: 'center' }}>
-
-                    <br></br>
-
-                    <div className="addevents_box" >
-                        <h1>Please fill out the fields you wish to update: </h1>
-                        <br></br>
-
-                        <div className="fields">
-
-                            <label> First Name: </label>
-                            <input type="text" name="firstname" value={firstname} placeholder={volData.firstname} onChange={onFirstNameChange}></input>
+                <div className="UP_box">
+                        <h1 class="headerUP">Update Profile</h1>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> First Name: </label>
+                            <input type="text" name="firstname" value={firstname} placeholder={volData.firstname} onChange={onFirstNameChange} className="inputUP"></input>
+                        </div>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> Last Name: </label>
+                            <input type="text" name="lastname" value={lastname} placeholder={volData.lastname} onChange={onLastNameChange} className="inputUP"></input>
 
                         </div>
-                        <div className="fields">
-
-                            <label> Last Name: </label>
-                            <input type="text" name="lastname" value={lastname} placeholder={volData.lastname} onChange={onLastNameChange}></input>
-
+                        <div className="fieldsUP" style={{ display: 'flex', justifyContent: 'center' }}>
+                            <label className="labelUP"> Address: </label>
+                            <textarea name="address" value={address} placeholder={volData.address} onChange={onAddressChange} className="inputUP"></textarea>
                         </div>
-                        <div className="fields" style={{ display: 'flex', justifyContent: 'center' }}>
-                            <label> Address: </label>
-                            {/* <textarea rows="3" cols= "30" placeholder="Enter your address"></textarea> */}
-                            <textarea name="address" value={address} placeholder={volData.address} onChange={onAddressChange}></textarea>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> City: </label>
+                            <input type="text" name="city" value={city} placeholder={volData.city} onChange={onCityChange} className="inputUP"></input>
                         </div>
-                        <div className="fields">
-                            <label> City: </label>
-                            <input type="text" name="city" value={city} placeholder={volData.city} onChange={onCityChange}></input>
-                        </div>
-                        <div className="fields">
-                            <label> State: </label>
-                            <input type="text" name="state" value={state} placeholder={volData.state} onChange={onStateChange} ></input>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> State: </label>
+                            <input type="text" name="state" value={state} placeholder={volData.state} onChange={onStateChange} className="inputUP"></input>
                         </div>
 
-                        <div className="fields">
-                            <label> Number: </label>
-                            <input type="text" name="contact" value={pnumber} placeholder={volData.pnumber} onChange={onPnumberChange}></input>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> Number: </label>
+                            <input type="text" name="contact" value={pnumber} placeholder={volData.pnumber} onChange={onPnumberChange} className="inputUP"></input>
                         </div>
-                        <div className="fields">
-                            <label> E-mail: </label>
-                            <input type="text" name="email" value={email} placeholder={volData.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)} ></input>
-                            <span style={{
-                                fontWeight: 'bold',
-                                color: 'red',
-                            }}>{emailError}</span><br />
-                            <span style={{
-                                fontWeight: 'bold',
-                                color: 'green',
-                            }}>Please enter your new or old Email ID. </span>
+                        <div className="fieldsUP">
+                            <label className="labelUP"> E-mail: </label>
+                            <div className="emailF">
+                                <input type="text" name="email" value={email} placeholder={volData.email} onChange={onEmailChange} onInput={(e) => validateEmail(e)} className="inputUP" style={{width: '100%'}}></input>
+                                <span style={{
+                                    fontWeight: 'bold',
+                                    color: 'red',
+                                }}>{emailError}</span>
+                            </div>
                         </div>
 
-                        <div className="btn btn-outline-success btn-lg " style={{ width: '200px' }} onClick={registerVol}> Update Details </div>
-
-                    </div>
+                        <div className="btn" style={{ width: '30%', marginTop: '3%', marginBottom: '0%'}} onClick={registerVol}> Update Details </div>
 
                 </div>
 

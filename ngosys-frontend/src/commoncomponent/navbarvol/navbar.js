@@ -14,12 +14,12 @@ const Navbar = () => {
     }
 
     return (
-        <div className="mainheader">
+        <div className="mainheadervolnav">
             <nav>
-                <a onClick={() => history.push("/homepage")}>Home</a>
-                <a onClick={() => history.push("/registeredevents")} >Registered Events</a>
-                <a onClick={() => history.push("/updatevol")}>Update Profile </a>
-                <button className="navLink" onClick={logout}>Logout</button>
+                <a onClick={() => history.push("/homepage")} className="navLink">Home</a>
+                <a onClick={() => history.push("/registeredevents")} className="navLink">Registered Events</a>
+                <a onClick={() => history.push("/updatevol")} className="navLink">Update Profile </a>
+                <button className="navLink" onClick={logout} style={{backgroundColor: 'black', border: '0'}}>Logout</button>
             </nav>
         </div>
     )

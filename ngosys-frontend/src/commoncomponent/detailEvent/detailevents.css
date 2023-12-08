@@ -4,3 +4,40 @@
     align-items: center;
     align-content: center;
 }
+
+.mainDivDE
+{
+    background: whitesmoke;
+    position: relative;
+    top: 0;
+    height: 160vh;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    color: black;
+}
+
+.container
+{
+    background-color: white;
+    color: black;
+    border-radius: 1%;
+}
+
+.edetails
+{
+    display: flex;
+    flex-direction: column;
+}
+.innerF
+{
+    margin: 0% 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+.mainDivDE .edetails .innerF>label
+{
+    margin-bottom: 1%;
+}

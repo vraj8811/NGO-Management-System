@@ -71,8 +71,8 @@ const Homepagengo = () => {
                     <a href="/homepagengo" className="navLink">Home</a>
                     <a onClick={() => history.push("/addevents")} className="navLink">Add Event</a>
                     <a onClick={() => history.push("/transection")} className="navLink">Fund Donation</a>
+                    <a onClick={() => history.push("/donation")} className="navLink">Things Donation</a>
                     <a onClick={() => history.push("/updatengo")} className="navLink">Update Profile</a>
-                    <a onClick={() => history.push("/donation")} className="navLink">Donations</a>
                     <button className="navLink" onClick={logout} style={{background: 'none', border: '0'}}>Logout</button>
                 </nav>
             </div>
@@ -86,7 +86,7 @@ const Homepagengo = () => {
                             <div class="col-3">
                                 <Card
                                     style={{
-                                        width: '100%',
+                                        width: '300px',
                                         height: '100%',
                                         backgroundColor: "",
                                         boxShadow: '0px 0px 6px 1px #4262ff'
@@ -110,7 +110,7 @@ const Homepagengo = () => {
                                             Date: {event.edate.substr(0, 10)}
                                         </Typography>
                                         <Typography color="textSecondary">
-                                            Organizer Name: {event.organizer}
+                                            Organizer: {event.organizer}
                                         </Typography>
                                         <Typography
                                             color="textSecondary"
@@ -160,7 +160,7 @@ const Homepagengo = () => {
                                             Date: {event.edate.substr(0, 10)}
                                         </Typography>
                                         <Typography color="textSecondary">
-                                            Organizer Name: {event.organizer}
+                                            Organizer: {event.organizer}
                                         </Typography>
                                         <Typography
                                             color="textSecondary"

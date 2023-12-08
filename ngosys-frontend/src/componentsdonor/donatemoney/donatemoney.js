@@ -3,13 +3,9 @@ import "./donatemoney.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import img1 from "../../firstpage//images/output-onlinepngtools.png";
-import img2 from "../../firstpage//images/bg.jpg";
-import img3 from "../../firstpage//images/NGO_MANAGE.png";
 import "antd/dist/antd"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from "../../commoncomponent/footer/footer2/footer2";
-import Googlemap from "../../commoncomponent/Googlemap/googlemap";
+import Navbar from "../../commoncomponent/navbardon/navbar";
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -109,55 +105,29 @@ const Donatemoney = () => {
   }
 
   return (
-    <div className="donatemoney">
-
-      <div className="mainheaderdon">
-        <div className="logo">
-          <a href="/"><img src={img1} alt="logo"></img></a>
-        </div>
-
-        <nav>
-          <a href="/homepagedonor">Home</a>
-          {/* <a href="/contactus">Contact</a> */}
-          <a onClick={() => history.push("/updatedon")} style={{ cursor: "pointer" }}>Update Profile </a>
-          <a onClick={() => history.push("/viewtrans")} style={{ cursor: "pointer" }}>View Transections </a>
-          {/* <a style={{ cursor: 'pointer' }} onClick={() => history.push("/registeredevents")} >Registered Events</a> */}
-          <button className="btn btn-outline-danger " onClick={logout}>Logout</button>
-
-        </nav>
-      </div>
-
-      <div className="ngodata" align="center" >
-        <br></br>
+    <div className="donatemoneyDiv">
+      <Navbar/>
+      <div className="row donNGO">
         {ngodata.map(ngo => (
           <>
-            <div key={ngo._id} className="card" style={{ width: "800px" }}>
+            <div key={ngo._id} className="cardDon container">
               <div className="card-body">
-                <table style={{ border: 2, width: "500px" }}>
-                  <tr>
-                    <td colSpan={3}><b><h5 className="card-title">{ngo.name}</h5></b></td>
-                  </tr>
-                  <tr>
-                    <td><p className="card-text"><b>Address:</b> {ngo.address}</p></td>
-                    <td><p className="card-text"><b>Contact:</b> {ngo.pnumber}</p></td>
-                  </tr>
-                  <tr>
-                    <td><p className="card-text"><b>City:</b> {ngo.city}</p></td>
-                    <td><p className="card-text"><b>Email:</b> {ngo.email}</p></td>
-                    <td rowSpan={3}><button className="btn btn-primary" onClick={() => displayRazorpay(ngo)}>Donate</button></td>
-                  </tr>
-                  <tr>
-                    <td><p className="card-text"><b>State:</b> {ngo.state}</p></td>
-                    <td><p className="card-text"><b>UPI:</b> {ngo.NGOID}</p></td>
-                  </tr>
-                </table>
+                <h5 className="title">{ngo.name}</h5>
+                <p className="text"><b>Address:</b> {ngo.address}</p>
+                <p className="text"><b>Contact:</b> {ngo.pnumber}</p>
+                <p className="text"><b>City:</b> {ngo.city}</p>
+                <p className="text"><b>Email:</b> {ngo.email}</p>
+                <p className="text"><b>State:</b> {ngo.state}</p>
+                <p className="text"><b>UPI:</b> {ngo.NGOID}</p>
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <p></p>
+                <button className="btn mx-0"onClick={() => displayRazorpay(ngo)} style={{marginTop: '2%'}}>Donate</button>
+                </div>
               </div>
             </div>
-            <br></br>
           </>
         ))}
       </div>
-
     </div>
   )
 }

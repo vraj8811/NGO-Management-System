@@ -1,15 +1,12 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useReducer } from "react";
-import "./donatethings.css";
 import { useHistory } from "react-router-dom";
 
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import img1 from "../../firstpage//images/output-onlinepngtools.png";
 
 import "antd/dist/antd"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from "../../commoncomponent/footer/footer2/footer2";
+import "../viewtrans/viewtrans.css";
+import Navbar from "../../commoncomponent/navbardon/navbar";
 
 
 const DonationSuccess = () => {
@@ -67,47 +64,32 @@ const DonationSuccess = () => {
 
 
   return (
-    <div className="donatemoney">
-
-      <div className="mainheaderdon">
-        <div className="logo">
-          <a href="/"><img src={img1} alt="logo"></img></a>
-        </div>
-
-        <nav>
-          <a href="/homepagedonor">Home</a>
-          <a onClick={() => history.push("/updatedon")} style={{ cursor: "pointer" }}>Update Profile </a>
-          <a onClick={() => history.push("/viewtrans")} style={{ cursor: "pointer" }}>View Transections </a>
-          <a style={{ cursor: 'pointer' }} onClick={() => history.push("/donationSuccess")} >Donation </a>
-          <button className="btn btn-outline-danger " onClick={logout}>Logout</button>
-
-        </nav>
-      </div>
-
-      <div className="ngodata" align="center" >
-        <br></br>
-        <h1 align="center">All Donations</h1>
+    <div className="mainVTDiv">
+    <Navbar/>
+      <div className="container ngodata px-5 my-5">
+        <h1 style={{fontWeight: 'bold', marginBottom: '1.5%', paddingTop: '2%'}}>Things Donated</h1>
         {thingsdata.length === 0 ? (
-          <p>No Doanation History available</p>
+          <h5 style={{textAlign: 'center', paddingBottom: '2%'}}>No donation till now.</h5>
         ) : (
-        <table className="table">
-            <thead>
+        <table className="table" style={{textAlign: "center"}}>
+            <thead className="table-dark">
               <tr>
                 <th>Index</th>
+                <th>Name</th>
                 <th>NGO Name</th>
                 <th>NGO Email</th>
-                <th>NGO Phone no.</th>
+                <th>NGO Contact no.</th>
                 <th>Image</th>
-                <th>Things Name</th>
                 <th>Quantity</th>
-                <th>Status</th>
-                <th>Pickup Status</th>
+                <th>Approval Status</th>
+                <th>Pick Up Status</th>
               </tr>
             </thead>
             <tbody>
             {thingsdata.map((trans, index) => (
                 <tr key={trans._id}>
                   <td>{index + 1}</td>
+                  <td>{trans.thingName}</td>
                   <td>{trans.ngoID.name}</td>
                   <td>{trans.ngoID.email}</td>
                   <td>{trans.ngoID.pnumber}</td>
@@ -115,35 +97,36 @@ const DonationSuccess = () => {
                     {
                       <img
                         src={trans.images}
-                        style={{ height: "100px" }}
+                        style={{ height: "100px", width: "100px" }}
                         alt={trans.images}
                       ></img>
                     }
                   </td>
-                  <td>{trans.thingName}</td>
                   <td>{trans.quantity}</td>
-                  <td> {trans.status == "0"
-                              ? "Panding"
+                  <td style={{width: '20%'}}> {trans.status == "0"
+                              ? <p style={{marginLeft: "4%", fontWeight: "bold", fontSize: "17px", marginTop: "0%"}} className="text-warning">Pending</p>
                               : trans.status == "1"
-                              ? "Accepted"
-                              : "Disabled"}
+                              ? <p style={{marginLeft: "4%", fontWeight: "bold", fontSize: "17px", marginTop: "0%"}} className="text-success">Accepted</p>
+                              : <p style={{marginLeft: "4%", fontWeight: "bold", fontSize: "17px", marginTop: "0%"}} className="text-danger">Rejected</p>
+                          }
                   </td>
                   <td>
                     {
                       <table>
                         <tr>
-                          <td>
-                          {trans.pick == "0" ? "Not Pickedup" : "Pickdup"}
+                          <td style={{width: '30%'}}>
+                          {trans.pick == "0" ? <p style={{marginLeft: "4%", fontWeight: "bold", fontSize: "17px", marginTop: "0%", marginBottom: "0.50%"}} className="text-warning">Not Picked Up</p> : <p style={{marginLeft: "2%", fontWeight: "bold", fontSize: "17px", marginTop: "0%"}} className="text-success">Picked Up</p>}
                           </td>
                         </tr>
-                          {trans.status == "1" && trans.pick == "0" ?( <tr>
-                          <td>
+                          {trans.status == "1" && trans.pick == "0" ?( 
+                        <tr>
+                          <td style={{width: '30%'}}>
                             <button
-                              className="btn btn-outline-success"
-                              style={{ marginRight: "3px" }}
+                              className="btn-success"
+                              style={{ marginTop: "0%", marginBottom: "10%", padding: "1% 2.65%", borderRadius: '2%', width: '100%', border: '2px solid green', color: "white"}}
                               onClick={() => handleAccept(trans._id)}
                             >
-                              Marked as Picked Up
+                              Mark As Picked Up
                             </button>
                           </td>
                         </tr> ): " "}

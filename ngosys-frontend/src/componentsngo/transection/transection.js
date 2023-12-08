@@ -39,11 +39,13 @@ const Transection = () => {
     return (
         <div className="mainDivT">
             <Navbar/>
-            <div className="container">
-                <h1 style={{fontWeight: 'bold', marginBottom: '1.5%'}}>Funds Donated</h1>
-                <h1 style={{fontWeight: 'bold', marginBottom: '1.5%'}}>Funds: {user.user.fund}</h1>
+            <div className="container my-4 px-3" style={{paddingBottom: '2%'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <h1 style={{fontWeight: 'bold', marginBottom: '1.5%'}}>Funds Donated</h1>
+                    <h4 style={{fontWeight: 'bold', marginTop: '1.5%'}}>Available Fund: {user.user.fund}</h4>
+                </div>
                 {transList.length === 0 ? (
-                    <p>No transaction history available.</p>
+                    <h5 style={{textAlign: 'center'}}>No transaction history available.</h5>
                 ) : (
                     <table className="table">
                         <thead className="thead table-dark">

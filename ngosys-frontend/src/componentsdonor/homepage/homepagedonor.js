@@ -4,12 +4,9 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import img1 from "../../firstpage//images/output-onlinepngtools.png";
-import img2 from "../../firstpage//images/bg.jpg";
-import img3 from "../../firstpage//images/NGO_MANAGE.png";
 import "antd/dist/antd"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from "../../commoncomponent/footer/footer2/footer2";
-import Googlemap from "../../commoncomponent/Googlemap/googlemap";
+import Navbar from "../../commoncomponent/navbardon/navbar";
 
 
 // const { Meta } = Card;
@@ -28,49 +25,14 @@ const Homepagedonor = () => {
 
     return (
         <div className="homepagedonor">
-
-            <div class="mainheaderdon">
-                <div class="logo">
-                <a href="/"><img src={img1} alt="logo"></img></a>
+                <Navbar/>
+                <div className="container my-5 p-3">
+                    <h5 className="headingDon">Your generosity has the power to transform lives, turning dreams into reality and creating a brighter future for those in need. Thank you for being the catalyst for positive change and making a lasting impact through your support.</h5>
+                    <div style={{display:'flex', justifyContent: 'center'}}>
+                        <button id="dbtn" onClick={() => history.push("/donatemoney")}> Donate Money</button>
+                        <button id="dbtn" onClick={() => history.push("/donatethings")}> Donate Things</button>
+                    </div>
                 </div>
-
-                <nav>
-                    <a href="/homepagedonor">Home</a>
-                    {/* <a href="/contactus">Contact</a> */}
-                    <a onClick={() => history.push("/updatedon")} style={{ cursor: "pointer" }}>Update Profile </a>
-                    <a onClick={() => history.push("/viewtrans")} style={{ cursor: "pointer" }}>View Transections </a>
-                    <a onClick={() => history.push("/donationSuccess")} style={{ cursor: "pointer" }}>Donations </a>
-                    {/* <a style={{ cursor: 'pointer' }} onClick={() => history.push("/registeredevents")} >Registered Events</a> */}
-                    <button className="btn btn-outline-danger " onClick={logout}>Logout</button>
-
-                </nav>
-            </div>
-
-            <br></br><br></br>
-            <h1 style={{ display: 'flex', justifyContent: 'center' }}>Hello {user.user.firstname} {user.user.lastname} !!!</h1>
-            <br></br><br></br>
-
-            <div className="extrabutton" align="center">
-                <button onClick={() => history.push("/donatemoney")} style={{color:'#020049'}}> Donate Money</button>
-                <button onClick={() => history.push("/donatethings")} style={{color:'#020049'}}> Donate Things</button>
-            </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-        
-        
         </div>
 
     )
