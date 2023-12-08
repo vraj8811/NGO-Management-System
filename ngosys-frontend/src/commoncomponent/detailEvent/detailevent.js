@@ -106,82 +106,64 @@ const Detailevent = () => {
         if (Event.edate < today.toISOString()) {
             return (
 
-                <div style={{ display: 'flex', justifycontent: 'center', padding: '30px' }}>
-
-                    <div >
-                        {/* <div style={{ display: 'flex', justifycontent: 'center', padding: '30px' }}><br />
-                            <button className='btn btn-outline-success btn-lg' onClick={addToCartHandler}>Click to register</button>
-                        </div> */}
-                        <label>Rate it:</label>
-                        <select name="rate" value={rate} className='form-control' onChange={onRateChange}>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                <div style={{ display: 'flex', justifycontent: 'center', flexDirection: 'column', textJustify:"center"}}>
+                        <h5 style={{marginBottom: '0.50%'}}>Give Rating</h5>
+                        <select name="rate" value={rate} className='form-control' onChange={onRateChange} style={{width: '5%'}}>
+                            <option value="1" style={{textAlign: 'center'}}>1</option>
+                            <option value="2" style={{textAlign: 'center'}}>2</option>
+                            <option value="3" style={{textAlign: 'center'}}>3</option>
+                            <option value="4" style={{textAlign: 'center'}}>4</option>
+                            <option value="5" style={{textAlign: 'center'}}>5</option>
                         </select>
-                        <br />
-                        <label>Feedback Message:</label><br />
+                        <h5 style={{marginTop: '1.5%'}}>Give Feedback</h5>
                         <textarea type='textarea' name='message' rows='3' cols='40' className='form-control'
-                            value={feedback} placeholder="Please give your feedback" onChange={onFeedbackChange} /><br />
-                        <br></br>
-                        <button type="submit" className='form-control btn btn-outline-success' onClick={addToFeedback}>Submit  </button>
-                        {/* </form> */}
+                            value={feedback} placeholder="Please give your feedback" onChange={onFeedbackChange} style={{width: '30%', marginTop: '0%'}} />
+                        <button type="submit" className='form-control btn ' onClick={addToFeedback} style={{width: '10%'}}>Submit  </button>
                     </div>
-                </div>
             )
         } else {
             return (
-                <div ><br />
-                    <div style={{ display: 'flex', justifyContent: 'center', padding: '30px' }}>
-                        <button className='btn btn-outline-success btn-lg' onClick={addToCartHandler}>Click to register</button>
-                    </div>
-                    <br></br>
-                    <div style={{ display: 'flex', justifyContent: 'center', padding: '30px' }}>
-                        <div >
-                            <h4>Do you have any suggestions for the NGO? </h4><br />
+                <div>
+                    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+                            <h4>Do you have any suggestion for the NGO?</h4>
                             <textarea type='textarea' name='suggestion' rows='3' cols='40' className='form-control'
-                                value={suggestion} placeholder="Please give your suggestion" onChange={onSuggestionChange} /><br />
-                            <button type="submit" className='form-control btn btn-outline-success' onClick={addToSuggestion}>Submit  </button>
-                        </div>
+                                value={suggestion} placeholder="Please give your suggestion" onChange={onSuggestionChange}  style={{width: '30%'}}/>
+                            <button type="submit" className='form-control btn btn-outline-success' onClick={addToSuggestion} style={{width: '10%'}}>Submit </button>
                     </div>
                 </div>
             )
         }
     }
 
+    function formatDate(date){
+        const createdDate = new Date(date);
+        let d = createdDate.getDate();
+        let m = createdDate.getMonth()+1;
+        let y = createdDate.getFullYear();
+        return d+'/'+m+'/'+y;
+    }
+
     return (
         <>
-            <Navbar />
-
-            <br />
-            <h1 style={{ display: 'flex', justifycontent: 'center' }}>{Event.name}</h1>
-            <br />
-            <div style={{ display: 'flex', justifycontent: 'center' }}>
-                <div style={{ marginRight: '100px' }}>
-                    <img src={Event.images} alt={Event.images} style={{ height: '200px' }}></img><br />
+            <div className='mainDivDE'>
+                <Navbar />
+                <div className="container edetails my-5" style={{boxShadow: "0px 0px 6px 2px #4262ff"}}>
+                    <h1 style={{marginBottom: '1%', fontWeight: 'bold'}}>{Event.name}</h1>
+                        <div style={{marginBottom: '2%'}}>
+                            <img src={Event.images} alt={Event.images} style={{ height: '250px', borderRadius: '200px', width: '250px' }}></img><br />
+                        </div>
+                        <div className='innerF'>
+                            <label><b>Event organizer:</b> {Event.organizer} </label>
+                            <label><b>Event category:</b> {Event.category} </label>
+                            <label><b>Date & Time:</b> {formatDate(Event.edate)} {Event.etime} </label>
+                            <label><b>Address:</b> {Event.address} ,{Event.city}, {Event.state} </label>
+                            <label><b>NGO's Contact Info.:</b> {Event.email}<br/>{Event.contact}</label>
+                            <label><b>Description:</b> {Event.description} </label>
+                        </div>
+                        <button className='btn mb-4' onClick={addToCartHandler}>Register</button>
                 </div>
-                <div>
-                    <label style={{ paddingBottom: '10px' }}>Event Name : {Event.name} </label><br />
-                    <label style={{ paddingBottom: '10px' }}>Event organizer : {Event.organizer} </label><br />
-                    <label style={{ paddingBottom: '10px' }}>Event category : {Event.category} </label><br />
-                    <label style={{ paddingBottom: '10px' }}>Date : {Event.edate} </label><br />
-                    <label style={{ paddingBottom: '10px' }}>Time : {Event.etime} </label><br />
-                    <label style={{ paddingBottom: '10px' }}>Address : {Event.address} ,{Event.city}, {Event.state} </label><br />
-                    <label style={{ paddingBottom: '10px' }}>NGO's Email ID : {Event.email} </label><br />
-                    <label style={{ paddingBottom: '10px' }}>NGO's Contact No. : {Event.contact} </label><br />
-                    <label style={{ width: "400px", paddingBottom: '10px' }}>Description : {Event.description} </label><br />
-
-                </div>
-                <div style={{ marginLeft: '20px' }}>
-                    <Googlemap />
-                </div>
+                {feedbackform()}
             </div>
-            {feedbackform()}
-            <br />
-
-            <br />
-
         </>
     );
 

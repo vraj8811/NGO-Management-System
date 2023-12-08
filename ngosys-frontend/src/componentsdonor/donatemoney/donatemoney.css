@@ -1,101 +1,41 @@
-.donatemoney {
-
-    background: rgb(239, 239, 239);
+.donatemoneyDiv {
+    background: whitesmoke;
     position: relative;
-    top: 0px;
-
-}
-
-/* Nav baar */
-
-.mainheaderdon
-{
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 10px 5px rgb(123, 255, 211);
-    position: sticky;
-
-}
-
-.mainheaderdon .logo img{
-width:auto;
-height : 50px;
-}
-
-.mainheaderdon nav{
-    width: 700px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.mainheaderdon nav a{
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    text-transform: uppercase;
-    position: relative;
-}
-
- nav a:before{
-    content: "";
+    top: 0;
+    height: 1000vh;
     position: absolute;
-    bottom: 0;
     left: 0;
-    width: 0;
-    height: 2px;
-    border-bottom: 2px solid #020049;
-    transition: all 0.4s linear;
+    width: 100%;
 }
 
- nav a:hover:before{
-    width: 100%; 
- }
-
-
-.homebutton{
-    background: #8b0404;
-    border: 1px solid #8b0404;
-    color: #fff;
-    font-size: 0.75rem;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
+.cardDon
+{
+    width: 50%;
+    color: black;
+    width: '100%';
+    height: '100%';
+    background-color: "white";
+    box-shadow: '0px 0px 6px 1px #4262ff';
+    margin-top: 2%;
 }
 
-.table{
-    margin-top: 30px;
-    /* align-items: center; */
-    /* border:1px solid #1877f2; */
-    border-spacing: 50px 0px;
-    text-align: left;
-}
-
-.row {
-    --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
+.donNGO
+{
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 2em;
-    margin-right: calc(-.5 * var(--bs-gutter-x));
-    margin-left: calc(-.5 * var(--bs-gutter-x));
+    flex-direction: column;
 }
 
-.extrabutton button{
-    background-image: linear-gradient(to right, #42cdff, #4262ff, #42cdff);
-    color: white;
-    margin-left: 10px;
-    padding: 10px 20px;
-    text-align: center;
+.title
+{
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 1%;
+    text-transform: capitalize;
+}
+
+.text
+{
     font-size: 14px;
-    font-style: italic;
-    border-radius: 10px;
-    border: 1px solid #4262ff ;
-    cursor: pointer;
+    margin-top: 1%;
+    margin-bottom: 0;
 }

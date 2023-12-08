@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import img1 from "../../firstpage/images/output-onlinepngtools.png";
-import Footer from "../../commoncomponent/footer/footer2/footer2";
-
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Navbar from '../../commoncomponent/navbarngo/navbar';
+import "./donation.css"
 
 
 const Doantion = () => {
@@ -85,35 +77,25 @@ const Doantion = () => {
   };
 
   return (
-    <div>
-      <div class="mainheadervol">
-        <div class="logo">
-          <a href="/">
-            <img src={img1} alt="logo"></img>
-          </a>
-        </div>
-
+    <div className="mainDivCTN">
         <Navbar/>
-      </div>
-
-      <div className="container">
-        <br></br>
-        <h1 align="center">All Donations</h1>
+      <div className="container my-4 px-3 py-3">
+        <h1 style={{fontWeight: 'bold', marginBottom: '1.5%', marginTop: '0%'}}>Things Donated</h1>
         {transList.length === 0 ? (
-          <p>No Doanation History available</p>
+          <h5 style={{textAlign: 'center'}}>No one has donated till now.</h5>
         ) : (
-          <table className="table">
-            <thead>
+          <table className="table" style={{textAlign: 'center'}}>
+            <thead className="table-dark">
               <tr>
                 <th>Index</th>
                 <th>Donor Name</th>
                 <th>Donor Address</th>
-                <th>Donor Phone Num.</th>
+                <th>Donor Contact No.</th>
                 <th>Donor Email</th>
-                <th>Things Name</th>
+                <th>Thing</th>
                 <th>Quantity</th>
                 <th>Image</th>
-                <th>Status</th>
+                <th>Approval Status</th>
                 <th>Pickup Status</th>
               </tr>
             </thead>
@@ -131,7 +113,7 @@ const Doantion = () => {
                     {
                       <img
                         src={trans.images}
-                        style={{ height: "100px" }}
+                        style={{ height: "100px", width: '100px'}}
                         alt={trans.images}
                       ></img>
                     }
@@ -140,27 +122,26 @@ const Doantion = () => {
                     {
                       <table>
                         <tr>
-                          <td colSpan={2}>
+                          <td colSpan={3} style={{width: '20%'}}>
                             {trans.status == "0"
-                              ? "Panding"
+                              ? <p style={{marginBottom: "0%", fontWeight: "bold", fontSize: "17px", marginTop: "0%"}} className="text-warning">Pending</p>
                               : trans.status == "1"
-                              ? "Accepted"
-                              : "Rejected"}
+                              ? <p style={{marginBottom: "0%", fontWeight: "bold", fontSize: "17px", marginTop: "0%"}} className="text-success">Accepted</p>
+                              : <p style={{marginBottom: "0%", fontWeight: "bold", fontSize: "17px", marginTop: "0%"}} className="text-danger">Rejected</p>}
                           </td>
                         </tr>
                           {trans.status == "0"?( <tr>
-                          <td>
+                          <td style={{width: '20%'}}>
                             <button
-                              className="btn btn-outline-success"
-                              style={{ marginRight: "3px" }}
+                              className="btn-outline-success text-success"
+                              style={{ marginTop: "5%", marginBottom: "10%", padding: "3% 4%", borderRadius: '10%', width: '70%', border: '2px solid green', background: 'none'}}
                               onClick={() => handelaccept(trans._id)}
                             >
-                              Accepts
+                              Accept
                             </button>
-                          </td>
-                          <td>
                             <button
-                              className="btn btn-outline-danger"
+                              className="btn-outline-danger text-danger"
+                              style={{ marginBottom: "10%", padding: "3% 4%", borderRadius: '10%', width: '70%', border: '2px solid red', background: 'none'}}
                               onClick={() => handelreject(trans._id)}
                             >
                               Reject
@@ -171,7 +152,9 @@ const Doantion = () => {
                       </table>
                     }
                   </td>
-                  <td>{trans.pick == "0" ? "Not Pickedup" : "Pickdup"}</td>
+                  <td style={{width: '12%'}}>
+                          {trans.pick == "0" ? <p style={{marginLeft: "4%", fontWeight: "bold", fontSize: "17px", marginTop: "0%", marginBottom: "0.50%"}} className="text-warning">Not Picked Up</p> : <p style={{marginLeft: "2%", fontWeight: "bold", fontSize: "17px", marginTop: "0%"}} className="text-success">Picked Up</p>}
+                  </td>
                 </tr>
               ))}
             </tbody>

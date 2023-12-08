@@ -1,101 +1,72 @@
 .homepagedonor {
-
-    background: rgb(239, 239, 239);
+    background: whitesmoke;
     position: relative;
-    top: 0px;
-
+    top: 0;
+    height: 1000vh;
+    position: absolute;
+    left: 0;
+    width: 100%;
 }
-
-/* Nav baar */
 
 .mainheaderdon
 {
     width: 100%;
     height: 60px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 10px 5px rgb(123, 255, 211);
-    position: sticky;
-
-}
-
-.mainheaderdon .logo img{
-width:auto;
-height : 50px;
+    background-color: black;
 }
 
 .mainheaderdon nav{
-    width: 700px;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
-.mainheaderdon nav a{
+.navLink{
     text-decoration: none;
-    color: black;
-    font-size: 16px;
+    color: #4262ff;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    position: relative;
-}
-
- nav a:before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    border-bottom: 2px solid #020049;
-    transition: all 0.4s linear;
-}
-
- nav a:hover:before{
-    width: 100%; 
- }
-
-
-.homebutton{
-    background: #8b0404;
-    border: 1px solid #8b0404;
-    color: #fff;
-    font-size: 0.75rem;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 8px;
-    outline: none;
     cursor: pointer;
+    padding: 0% 3%;
+    font-weight: bolder;
 }
 
-.table{
-    margin-top: 30px;
-    /* align-items: center; */
-    /* border:1px solid #1877f2; */
-    border-spacing: 50px 0px;
-    text-align: left;
+.navLink:hover
+{
+    color: #2e42a4;
 }
 
-.row {
-    --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 2em;
-    margin-right: calc(-.5 * var(--bs-gutter-x));
-    margin-left: calc(-.5 * var(--bs-gutter-x));
+#dbtn:hover
+{
+    background-image: linear-gradient(to right,  #2e42a4, #90d7f1);
+    color: navy;
 }
 
-.extrabutton button{
-    background-image: linear-gradient(to right, #42cdff, #4262ff, #42cdff);
+#dbtn
+{
+    background-image: linear-gradient(to right,  #4262ff, #90d7f1);
     color: white;
-    margin-left: 10px;
-    padding: 10px 20px;
+    margin-left: 0.5%;
+    margin-bottom: 1%;
+    padding: 15px 20px;
     text-align: center;
-    font-size: 14px;
-    font-style: italic;
+    font-size: 16px;
     border-radius: 10px;
-    border: 1px solid #4262ff ;
-    cursor: pointer;
+    border: 0;
+    width: 15%;
+    font-weight: bold;
+}
+
+.headingDon
+{
+    font-size: 30px;
+    font-weight: 700;
+    margin: 1% 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2240a4;
+    padding: 1% 5%;
+    text-align: center;
 }

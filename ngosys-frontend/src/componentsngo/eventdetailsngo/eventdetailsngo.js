@@ -99,7 +99,7 @@ const Detaileventngo = () => {
                         <label><b>Event category:</b> {Event.category} </label>
                         <label><b>Date & Time:</b> {formatDate(Event.edate)} {Event.etime} </label>
                         <label><b>Address:</b> {Event.address} ,{Event.city}, {Event.state} </label>
-                        <label><b>NGO's Contact Info.:</b> {Event.email}<br/>{Event.contact}</label>
+                        <label><b>Contact Info.:</b> {Event.email}<br/>{Event.contact}</label>
                         <label><b>Description:</b> {Event.description} </label>
                     </div>
                     {updatebutton()}
@@ -108,57 +108,65 @@ const Detaileventngo = () => {
                 <div className="container my-3 suggesBox">
                 <h3 style={{fontWeight: "bold", marginTop:"2%"}}>Suggestions</h3>
                 <div className="row suggesRow" style={{marginTop: '0.5%'}}>
-                {
-                        Suggest.map(suggest =>
-                            <div className="col-4 suggesCard">
-                                <Card
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        backgroundColor: "",
-                                        boxShadow: '0px 0px 6px 1px #4262ff'
-                                    }}
-                                >
-                                    <CardContent style={{ paddingBottom: '0%', textAlign: 'center'}}>
-                                        <Typography
-                                            color="textSecondary"
-                                        >
-                                            {suggest.suggestion}
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions style={{ paddingBottom: '3%'}}>
-                                        <h6>- {suggest.firstname} {suggest.lastname}</h6>
-                                    </CardActions>
-                                </Card>
-                                <br/>
-                            </div>
-                        )}
+                    {Suggest.length === 0 ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'black', fontWeight: 'bold'}}>
+                            <h5>No Suggestions..</h5>
+                        </div>
+                        :
+                            Suggest.map(suggest =>
+                                <div className="col-4 suggesCard">
+                                    <Card
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            backgroundColor: "",
+                                            boxShadow: '0px 0px 6px 1px #4262ff'
+                                        }}
+                                    >
+                                        <CardContent style={{ paddingBottom: '0%', textAlign: 'center'}}>
+                                            <Typography
+                                                color="textSecondary"
+                                            >
+                                                {suggest.suggestion}
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions style={{ paddingBottom: '3%'}}>
+                                            <h6>- {suggest.firstname} {suggest.lastname}</h6>
+                                        </CardActions>
+                                    </Card>
+                                    <br/>
+                                </div>
+                            )
+                    }
                 </div>
                 </div>
 
                 <div className="container my-5 px-5 tFlex">
                     <h3 style={{fontWeight: "bold", marginTop:"2%"}}>Registered Volunteers</h3>
-                    <table className="table" style={{textAlign: 'center'}}>
-                        <tr className="thead table-dark" style={{backgroundColor: 'black'}}>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Contact No.</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        {
-                            Participants.map(parti =>
-                                <tbody className="tbody">
-                                    <tr >
-                                        <td>{parti.firstname} {parti.lastname}</td>
-                                        <td>{parti.email}</td>
-                                        <td>{parti.pnumber}</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            )}
-                    </table>
+                    {   Participants.length === 0 ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'black', fontWeight: 'bold'}}>
+                            <h5>No one has volunteered..</h5></div>
+                        :
+                        <table className="table" style={{textAlign: 'center'}}>
+                            <tr className="thead table-dark" style={{backgroundColor: 'black'}}>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact No.</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            {
+                                Participants.map(parti =>
+                                    <tbody className="tbody">
+                                        <tr >
+                                            <td>{parti.firstname} {parti.lastname}</td>
+                                            <td>{parti.email}</td>
+                                            <td>{parti.pnumber}</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                )}
+                        </table>
+                    }
                 </div>
             </div>
         </>

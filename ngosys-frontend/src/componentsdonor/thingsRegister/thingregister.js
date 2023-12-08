@@ -4,9 +4,8 @@ import React, { useState } from "react";
 import "./thingregister.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import Navbar from "../../commoncomponent/navbar";
+import Navbar from "../../commoncomponent/navbardon/navbar";
 import img1 from "../../firstpage/images/logart.png";
-import Footer from "../../commoncomponent/footer/footer2/footer2";
 import { Convert } from 'mongo-image-converter';
 
 const ThingRegister = () => {
@@ -93,67 +92,39 @@ const ThingRegister = () => {
 
   return (
     <>
+      <div className="registerdonthing">
       <Navbar />
-
-      <div
-        className="registerdon"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <div
-          className="regdonbox"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          <section className="leftdonreg">
-            <img
-              src={img1}
-              alt="login picture"
-              width="400px"
-              style={{ marginRight: "100px" }}
-            />
-          </section>
-          {/* <div className="d-flex" style={{ height: '600px' }}>
-                        <div className="vr"></div>
-                    </div> */}
-          <section className="">
-            <h1>Donate Things</h1>
-            <br></br>
-            
-            <div className="fields">
-              <label> Thing Name:</label>
-              <input
-                type="text"
-                name="thingName"
-                value={donationInfo.thingName}
-                placeholder="Enter Thing Name"
-                onChange={handleChange}
-              ></input>
+          <div className="regThingBox">
+            <h1 className="headerT">Donate Things</h1>
+              <div className="fieldsT">
+                <label className="labelT">Name:</label>
+                <input
+                  type="text"
+                  name="thingName"
+                  value={donationInfo.thingName}
+                  placeholder="Enter Name"
+                  onChange={handleChange}
+                  className="inputT"
+                ></input>
+              </div>
+            <div className="fieldsT">
+                <label htmlFor="file" className="labelT"> Choose Image: </label>
+                <input type="file" filename="Images" onChange={(e) => { onImagesChange(e.target.files[0]) }} className="inputT"></input>
             </div>
-            <div className="fields">
-                                   <label htmlFor="file"> Choose Images: </label>
-                                   <input type="file" filename="Images" style={{ width: '250px' }} onChange={(e) => { onImagesChange(e.target.files[0]) }}></input>
-                              </div>
-            <div className="fields">
-              <label>Quantity:</label>
+            <div className="fieldsT">
+              <label className="labelT">Quantity:</label>
               <input
                 type="text"
                 name="quantity"
                 value={donationInfo.quantity}
-                placeholder="Enter quantity"
+                placeholder="Enter Quantity"
                 onChange={handleChange}
+                className="inputT"
               ></input>
             </div>
-           
-
-            <div
-              className="btn btn-outline-primary btn-lg"
-              onClick={registerDonation}
-            >
-              Donate
-            </div>
-          </section>
-        </div>
+            <div className="btn" onClick={registerDonation} style={{width: '35%', marginTop: '2%'}}>Donate</div>
+          </div>
       </div>
-      <Footer />
     </>
   );
 };

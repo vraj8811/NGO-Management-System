@@ -1,15 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useReducer } from "react";
-import "./donatethings.css";
+import "../donatemoney/donatemoney.css";
 import { useHistory } from "react-router-dom";
-
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import img1 from "../../firstpage//images/output-onlinepngtools.png";
-
 import "antd/dist/antd"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from "../../commoncomponent/footer/footer2/footer2";
+import Navbar from "../../commoncomponent/navbardon/navbar";
 
 
 const Donatethings = () => {
@@ -46,56 +41,29 @@ const Donatethings = () => {
   }
 
   return (
-    <div className="donatemoney">
-
-      <div className="mainheaderdon">
-        <div className="logo">
-          <a href="/"><img src={img1} alt="logo"></img></a>
-        </div>
-
-        <nav>
-          <a href="/homepagedonor">Home</a>
-          <a onClick={() => history.push("/updatedon")} style={{ cursor: "pointer" }}>Update Profile </a>
-          <a onClick={() => history.push("/viewtrans")} style={{ cursor: "pointer" }}>View Transections </a>
-          <a onClick={() => history.push("/donationSuccess")} style={{ cursor: "pointer" }}>Donations </a>
-          <button className="btn btn-outline-danger " onClick={logout}>Logout</button>
-
-        </nav>
-      </div>
-
-      <div className="ngodata" align="center" >
-        <br></br>
+    <div className="donatemoneyDiv">
+      <Navbar/>
+      <div className="row donNGO">
         {ngodata.map(ngo => (
           <>
-            <div key={ngo._id} className="card" style={{ width: "800px" }}>
-              <div className="card-body">
-                <table style={{ border: 2, width: "500px" }}>
-                  <tr>
-                    <td colSpan={3}><b><h5 className="card-title">{ngo.name}</h5></b></td>
-                  </tr>
-                  <tr>
-                    <td><p className="card-text"><b>Address:</b> {ngo.address}</p></td>
-                    <td><p className="card-text"><b>Contact:</b> {ngo.pnumber}</p></td>
-                  </tr>
-                  <tr>
-                    <td><p className="card-text"><b>City:</b> {ngo.city}</p></td>
-                    <td><p className="card-text"><b>Email:</b> {ngo.email}</p></td>
-                    
-                    <td rowSpan={3}>
-                    <button className="btn btn-primary" onClick={()=>{handleSubmit(ngo)}}>Donate</button></td>
-                  </tr>
-                  <tr>
-                    <td><p className="card-text"><b>State:</b> {ngo.state}</p></td>
-                    <td><p className="card-text"><b>UPI:</b> {ngo.NGOID}</p></td>
-                  </tr>
-                </table>
-              </div>
+            <div key={ngo._id} className="cardDon container">
+            <div className="card-body">
+              <h5 className="title">{ngo.name}</h5>
+                  <p className="text"><b>Address:</b> {ngo.address}</p>
+                  <p className="text"><b>Contact:</b> {ngo.pnumber}</p>
+                  <p className="text"><b>City:</b> {ngo.city}</p>
+                  <p className="text"><b>Email:</b> {ngo.email}</p>
+                  <p className="text"><b>State:</b> {ngo.state}</p>
+                  <p className="text"><b>UPI:</b> {ngo.NGOID}</p>
+                  <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <p></p>
+                    <button className="btn mx-0" onClick={()=>{handleSubmit(ngo)}} style={{marginTop: '2%'}}>Donate</button>
+                  </div>
             </div>
-            <br></br>
+            </div>
           </>
         ))}
       </div>
-
     </div>
   )
 }

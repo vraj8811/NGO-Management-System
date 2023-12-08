@@ -3,13 +3,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios"
 import { useHistory } from "react-router-dom";
 import Navbar from "../../commoncomponent/navbarvol/navbar";
-import Footer from "../footer/footer2/footer2";
-
+import "./registeredevents.css";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 const Registeredevents = () => {
@@ -78,129 +75,66 @@ const Registeredevents = () => {
 
         <div className="registeredevents">
             <Navbar />
-            <br />
-            <br />
-            <h1 style={{ display: 'flex', justifyContent: 'center', textDecoration: 'underline' }}>List of Events:</h1>
-            <h2 style={{ display: 'flex', justifyContent: 'center', textDecoration: 'underline' }}>Here are your upcoming events:</h2>
-            <div style={{ width: '90%', marginLeft: '3rem ', marginRight: '3rem ' }}>
-
-
-                <div className="row">
-                    {
+            <div className="container my-5 p-4">
+                <div className="upFlex">
+                <h2 style={{fontWeight: 'bold', margin: '1% 2%'}}>Upcoming Events</h2>
+                <table className="table" style={{margin: '1% 0'}}>
+                            <thead className="thead table-dark">
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Organizer</th>
+                                    <th>Date</th>
+                                    <th>City</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody className="tbody">
+                        {
                         Event.map(event =>
+                                <tr>
+                                    <td><img src={event.images} alt={event.images} class="rounded" style={{ height: '80px', width: '100px'}}></img></td>
+                                    <td><p style={{fontSize: '18px'}} className="py-3">{event.name}</p></td>
+                                    <td><p style={{fontSize: '18px'}} className="py-3">{event.organizer}</p></td>
+                                    <td><p style={{fontSize: '18px'}} className="py-3">{event.edate.substr(0, 10)}</p></td>
+                                    <td><p style={{fontSize: '18px'}} className="py-3">{event.city}</p></td>
+                                    <td style={{padding: '2.75% 0%'}}><button className="btn-outline-danger px-2 py-1" style={{color: 'red', background: 'none', borderRadius: '10%', border: '2px solid'}} onClick={() => removeEvent(event._id)} >Cancel</button><a href={`/Event/${event._id}`}><button className="btn-outline-info px-2 py-1" style={{background: 'none', borderRadius: '10%', marginLeft: '5%', border: '2px solid #4262ff', color: '#4262ff'}} >More</button></a></td>
+                                </tr>
+                            )}
+                        </tbody>
+                </table>
 
-                            <div class="col-3 mx-auto ">
-
-                                <Card
-                                    style={{
-                                        width: 320,
-                                        height: 320,
-                                        backgroundColor: "",
-
-                                        boxShadow: '0px 0px 10px 5px rgb(123, 255, 211)'
-                                    }}
-                                >
-                                    <CardContent>
-                                        <Typography
-                                            style={{ fontSize: 14, display: 'flex', justifyContent: 'center' }}
-                                            color="textSecondary"
-                                            gutterBottom
-                                        >
-                                            <img src={event.images} alt={event.images} class="rounded" style={{ height: '100px' }}></img>
-
-                                        </Typography>
-                                        <Typography variant="h6" component="h2">
-                                            Name: {event.name}
-                                        </Typography>
-                                        <Typography
-                                            color="textSecondary"
-                                        >
-                                            Date: {event.edate.substr(0, 10)}
-                                        </Typography>
-                                        <Typography color="textSecondary">
-                                            NGO Name: {event.organizer}
-                                        </Typography>
-                                        <Typography
-                                            color="textSecondary"
-                                        >
-                                            City: {event.city}
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <button className="btn btn-outline-danger" onClick={() => removeEvent(event._id)} >cancel</button>
-                                        <a href={`/Event/${event._id}`}><button className="btn btn-outline-info" style={{ marginLeft: '20px' }} >More</button></a>
-
-                                    </CardActions>
-                                </Card>
-                                <br />
-                                <br />
-
-                            </div>
-                        )}
                 </div>
-            </div >
 
-
-
-
-
-            <h2 style={{ display: 'flex', justifyContent: 'center', textDecoration: 'underline' }}>Here are your previous events:</h2>
-
-            <div style={{ width: '90%', marginLeft: '3rem ', marginRight: '3rem ' }}>
-                <div className="row">
-                    {
+                <div className="upFlex">
+                    <h2 style={{fontWeight: 'bold', marginLeft: '2%', marginRight: '2%', marginTop: '3%', marginBottom: '1%'}}>Previous Events</h2>
+                    <table className="table" style={{margin: '1% 0'}}>
+                            <thead className="thead table-dark">
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Organizer</th>
+                                    <th>Date</th>
+                                    <th>City</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody className="tbody">
+                        {
                         LessEvent.map(event =>
-
-                            <div class="col-3 mx-auto ">
-                                <Card
-                                    style={{
-                                        width: 320,
-                                        height: 320,
-                                        backgroundColor: "",
-
-                                        boxShadow: '0px 0px 10px 5px rgb(123, 255, 211)'
-                                    }}
-                                >
-                                    <CardContent>
-                                        <Typography
-                                            style={{ fontSize: 14, display: 'flex', justifyContent: 'center' }}
-                                            color="textSecondary"
-                                            gutterBottom
-                                        >
-                                            <img src={event.images} alt={event.images} class="rounded" style={{ height: '100px' }}></img>
-
-                                        </Typography>
-                                        <Typography variant="h6" component="h2">
-                                            Name: {event.name}
-                                        </Typography>
-                                        <Typography
-                                            color="textSecondary"
-                                        >
-                                            Date: {event.edate.substr(0, 10)}
-                                        </Typography>
-                                        <Typography color="textSecondary">
-                                            NGO Name: {event.organizer}
-                                        </Typography>
-                                        <Typography
-                                            color="textSecondary"
-                                        >
-                                            City: {event.city}
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <button className="btn btn-outline-danger" onClick={() => removeEvent(event._id)} >cancel</button>
-                                        <a href={`/Event/${event._id}`}><button className="btn btn-outline-info" style={{ marginLeft: '20px' }} >More</button></a>
-
-                                    </CardActions>
-                                </Card>
-                                <br />
-                                <br />
-
-                            </div>
-                        )}
+                                <tr>
+                                    <td><img src={event.images} alt={event.images} class="rounded" style={{ height: '80px', width: '100px' }}></img></td>
+                                    <td><p style={{fontSize: '18px'}} className="py-3">{event.name}</p></td>
+                                    <td><p style={{fontSize: '18px'}} className="py-3">{event.organizer}</p></td>
+                                    <td><p style={{fontSize: '18px'}} className="py-3">{event.edate.substr(0, 10)}</p></td>
+                                    <td><p style={{fontSize: '18px'}} className="py-3">{event.city}</p></td>
+                                    <td style={{padding: '2.75% 0%'}}><a href={`/Event/${event._id}`}><button className="btn-outline-info px-2 py-1" style={{background: 'none', borderRadius: '10%', marginLeft: '5%', border: '2px solid #4262ff', color: '#4262ff'}} >More</button></a></td>
+                                </tr>
+                            )}
+                        </tbody>
+                </table>
                 </div>
             </div>
-            
         </div>
 
     )

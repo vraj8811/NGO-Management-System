@@ -235,7 +235,7 @@ const Homepage = () => {
                         <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
                             <h2>No post yet....</h2>
                         </div> :
-                        <div className="row" style={{justifyContent: 'center'}}>
+                        <div className="row" style={{justifyContent: 'center', marginTop: '3%'}}>
                             {rendercards}
                         </div>
                     }
@@ -244,7 +244,7 @@ const Homepage = () => {
             
                 {Postsize >= Limit &&
                     <div>
-                        <button className="btn" style={{width: '100%'}} onClick={onloadmore}>Load More</button>
+                        <button className="btn" style={{width: '100%', marginTop: "0%"}} onClick={onloadmore}>Load More</button>
                     </div>
                 }
                 <br />
